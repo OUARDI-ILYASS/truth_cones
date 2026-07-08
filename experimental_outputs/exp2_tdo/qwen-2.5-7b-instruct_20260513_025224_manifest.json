@@ -1,0 +1,101 @@
+{
+  "model_name": "qwen-2.5-7b-instruct",
+  "add_layer": 18,
+  "alpha": 24.125,
+  "weights_file": "qwen-2.5-7b-instruct_20260513_025224_weights.pt",
+  "metadata": {
+    "add_layer": 18,
+    "alpha": 24.125,
+    "cone_dim": 1,
+    "training": {
+      "lr": 0.01,
+      "batch_size": 1,
+      "effective_batch_size": 16,
+      "epochs": 1,
+      "patience": 5,
+      "n_lr_reduce": 2,
+      "n_sample": 16,
+      "weight_decay": 0.0
+    },
+    "loss_weights": {
+      "ablation": 1.0,
+      "addition": 0.2,
+      "retention": 1.0
+    },
+    "retain_window": 30
+  },
+  "results": {
+    "lowest_loss": 0.0,
+    "did_early_stop": true
+  },
+  "history_metrics": {
+    "abl_loss": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "add_loss": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "ret_loss": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "lr_changes": [
+      95,
+      175
+    ]
+  },
+  "eval": {
+    "dim": {
+      "asr_ablation": 0.7034482758620689,
+      "asr_addition": 0.993103448275862
+    },
+    "cone_1d": {
+      "asr_ablation": 1.0,
+      "asr_addition": 0.996551724137931
+    }
+  }
+}

@@ -1,0 +1,43 @@
+# Experiment 5: Retention via KL divergence
+
+models:
+  - name: qwen-2.5-1.5b-instruct
+  - name: gemma-2-2b-it
+  - name: qwen-2.5-7b-instruct
+    quantization: true
+  - name: gemma-2-9b-it
+    quantization: true
+  - name: llama-3.1-8b-instruct
+    quantization: true
+  - name: qwen-2.5-14b-instruct
+    quantization: true   # 4-bit for memory
+
+
+retain_dataset: datasets/alpaca_data.json
+n_retain_prompts: 100
+n_mc_kl: 32
+logit_window: 30
+kl_threshold: 0.1
+cone_dims: [1, 2, 3, 4]
+
+# Filter out instructions likely to invoke factual recall
+factual_filter_keywords:
+  - capital
+  - country
+  - element
+  - animal
+  - species
+  - history
+  - year
+  - born
+  - died
+  - invented
+  - discovered
+  - located
+  - "true or false"
+  - fact
+  - trivia
+
+tco_dir: experimental_outputs/exp3_tco
+output_dir: experimental_outputs/exp5_retention
+figures_dir: figures/exp5_retention

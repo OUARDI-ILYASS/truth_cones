@@ -1,0 +1,187 @@
+{
+  "schema_version": "1.0",
+  "produced_by": "experiment_2",
+  "timestamp": "2026-05-15T01:51:14.444001",
+  "models": {
+    "qwen-2.5-1.5b-instruct": {
+      "add_layer": 17,
+      "alpha": 13.049909591674805,
+      "weights_file": "qwen-2.5-1.5b-instruct_20260515_001755_weights.pt",
+      "dim_vector_key": "dim_direction",
+      "cone_vector_key": "best_vectors",
+      "eval": {
+        "dim": {
+          "asr_ablation": 0.010050251256281407,
+          "asr_addition": 1.0
+        },
+        "dim_ood": {
+          "asr_ablation": 0.13333333333333333,
+          "asr_addition": 1.0
+        },
+        "cone_1d": {
+          "asr_ablation": 1.0,
+          "asr_addition": 1.0
+        },
+        "cone_1d_ood": {
+          "asr_ablation": 0.9978494623655914,
+          "asr_addition": 1.0
+        }
+      },
+      "training": {
+        "lowest_loss": 0.0,
+        "did_early_stop": true,
+        "total_steps": 16
+      }
+    },
+    "gemma-2-2b-it": {
+      "add_layer": 15,
+      "alpha": 84.5228271484375,
+      "weights_file": "gemma-2-2b-it_20260515_002836_weights.pt",
+      "dim_vector_key": "dim_direction",
+      "cone_vector_key": "best_vectors",
+      "eval": {
+        "dim": {
+          "asr_ablation": 0.21608040201005024,
+          "asr_addition": 1.0
+        },
+        "dim_ood": {
+          "asr_ablation": 0.07096774193548387,
+          "asr_addition": 1.0
+        },
+        "cone_1d": {
+          "asr_ablation": 1.0,
+          "asr_addition": 1.0
+        },
+        "cone_1d_ood": {
+          "asr_ablation": 1.0,
+          "asr_addition": 1.0
+        }
+      },
+      "training": {
+        "lowest_loss": 0.0,
+        "did_early_stop": true,
+        "total_steps": 16
+      }
+    },
+    "qwen-2.5-7b-instruct": {
+      "add_layer": 18,
+      "alpha": 26.609375,
+      "weights_file": "qwen-2.5-7b-instruct_20260515_004324_weights.pt",
+      "dim_vector_key": "dim_direction",
+      "cone_vector_key": "best_vectors",
+      "eval": {
+        "dim": {
+          "asr_ablation": 0.0,
+          "asr_addition": 0.9949748743718593
+        },
+        "dim_ood": {
+          "asr_ablation": 0.015053763440860216,
+          "asr_addition": 0.9741935483870968
+        },
+        "cone_1d": {
+          "asr_ablation": 0.020100502512562814,
+          "asr_addition": 0.9396984924623115
+        },
+        "cone_1d_ood": {
+          "asr_ablation": 0.07956989247311828,
+          "asr_addition": 0.8129032258064516
+        }
+      },
+      "training": {
+        "lowest_loss": 0.0,
+        "did_early_stop": true,
+        "total_steps": 16
+      }
+    },
+    "gemma-2-9b-it": {
+      "add_layer": 24,
+      "alpha": 106.5625,
+      "weights_file": "gemma-2-9b-it_20260515_010546_weights.pt",
+      "dim_vector_key": "dim_direction",
+      "cone_vector_key": "best_vectors",
+      "eval": {
+        "dim": {
+          "asr_ablation": 0.0,
+          "asr_addition": 0.7135678391959799
+        },
+        "dim_ood": {
+          "asr_ablation": 0.04516129032258064,
+          "asr_addition": 0.8365591397849462
+        },
+        "cone_1d": {
+          "asr_ablation": 0.7738693467336684,
+          "asr_addition": 0.9597989949748744
+        },
+        "cone_1d_ood": {
+          "asr_ablation": 0.32688172043010755,
+          "asr_addition": 0.9634408602150538
+        }
+      },
+      "training": {
+        "lowest_loss": 0.0,
+        "did_early_stop": true,
+        "total_steps": 16
+      }
+    },
+    "llama-3.1-8b-instruct": {
+      "add_layer": 14,
+      "alpha": 4.06640625,
+      "weights_file": "llama-3.1-8b-instruct_20260515_012214_weights.pt",
+      "dim_vector_key": "dim_direction",
+      "cone_vector_key": "best_vectors",
+      "eval": {
+        "dim": {
+          "asr_ablation": 0.020100502512562814,
+          "asr_addition": 1.0
+        },
+        "dim_ood": {
+          "asr_ablation": 0.18494623655913978,
+          "asr_addition": 0.9849462365591398
+        },
+        "cone_1d": {
+          "asr_ablation": 1.0,
+          "asr_addition": 1.0
+        },
+        "cone_1d_ood": {
+          "asr_ablation": 1.0,
+          "asr_addition": 1.0
+        }
+      },
+      "training": {
+        "lowest_loss": 0.0,
+        "did_early_stop": true,
+        "total_steps": 16
+      }
+    },
+    "qwen-2.5-14b-instruct": {
+      "add_layer": 30,
+      "alpha": 48.25,
+      "weights_file": "qwen-2.5-14b-instruct_20260515_015114_weights.pt",
+      "dim_vector_key": "dim_direction",
+      "cone_vector_key": "best_vectors",
+      "eval": {
+        "dim": {
+          "asr_ablation": 0.0,
+          "asr_addition": 1.0
+        },
+        "dim_ood": {
+          "asr_ablation": 0.010752688172043012,
+          "asr_addition": 1.0
+        },
+        "cone_1d": {
+          "asr_ablation": 0.6582914572864321,
+          "asr_addition": 1.0
+        },
+        "cone_1d_ood": {
+          "asr_ablation": 0.12473118279569892,
+          "asr_addition": 1.0
+        }
+      },
+      "training": {
+        "lowest_loss": 0.0,
+        "did_early_stop": true,
+        "total_steps": 16
+      }
+    }
+  }
+}

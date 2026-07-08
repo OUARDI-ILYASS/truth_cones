@@ -1,0 +1,7 @@
+# Experiment 4: DIM vs Cone alignment (post-hoc)
+
+cone_dims: [1, 2, 3, 4]
+tdo_dir: experimental_outputs/exp2_tdo
+tco_dir: experimental_outputs/exp3_tco
+output_dir: experimental_outputs/exp4_alignment
+figures_dir: figures/exp4_alignment

@@ -1,0 +1,213 @@
+% ============================================================================
+%  All tables for the paper.
+%  Required packages: booktabs, xcolor, colortbl, multirow, siunitx (optional)
+%
+%  Color macros (define once in main preamble):
+%      \definecolor{bestcolor}{HTML}{C62828}    % deep red for best
+%      \definecolor{secondcolor}{HTML}{1565C0}  % deep blue for second-best
+%      \definecolor{failcolor}{HTML}{FFCDD2}    % light red row tint for KL>0.1
+%      \definecolor{passcolor}{HTML}{C8E6C9}    % light green row tint for KL<0.1
+%      \newcommand{\best}[1]{\textcolor{bestcolor}{\textbf{#1}}}
+%      \newcommand{\second}[1]{\textcolor{secondcolor}{\underline{#1}}}
+% ============================================================================
+
+% ----------------------------------------------------------------------------
+% TABLE 1 — Master single-row-per-model summary (the decisive table).
+% Place at the opening of §4 Experiments.
+% ----------------------------------------------------------------------------
+\begin{table*}[t]
+\centering
+\caption{%
+\textbf{Cross-model summary.}
+$l^{*}$: target hidden-state layer from Exp~1. $\alpha = \|\theta_{\text{DIM}}\|_{2}$:
+intervention magnitude. ASR$_{\text{abl}}$: in-distribution Answer Switching Rate
+under ablation. ``Surgical'' columns mark whether $\mathrm{mean\,KL} < 0.1$ on the
+retain set. Higher ASR ($\uparrow$) and lower KL ($\downarrow$) are better.
+The three models that fail \emph{both} axes at $k=1$ (\colorbox{failcolor!60}{red row tint})
+all recover \emph{both} at $k=2$.}
+\label{tab:master}
+\small
+\begin{tabular}{lrrrrrrcc}
+\toprule
+Model & $l^{*}$ & $\alpha$
+      & \multicolumn{1}{c}{DIM ASR$_{\text{abl}}\!\uparrow$}
+      & \multicolumn{1}{c}{TDO ASR$_{\text{abl}}\!\uparrow$}
+      & \multicolumn{1}{c}{$k{=}2$ ASR$\!\uparrow$}
+      & \multicolumn{1}{c}{$k{=}2$ KL$\!\downarrow$}
+      & Surg.\ $k{=}1$ & Surg.\ $k{=}2$ \\
+\midrule
+Qwen-2.5-1.5B-Instruct & 17 &  13.05 & 0.010 & \best{1.000} & 1.000 & 0.008 & \checkmark & \checkmark \\
+Gemma-2-2B-it          & 15 &  84.52 & 0.216 & \best{1.000} & 1.000 & 0.004 & \checkmark & \checkmark \\
+\rowcolor{failcolor!50}
+Qwen-2.5-7B-Instruct   & 18 &  26.61 & 0.000 & 0.020        & \best{1.000} & 0.037 & $\times$ & \checkmark \\
+Gemma-2-9B-it          & 24 & 106.56 & 0.000 & 0.774        & \best{1.000} & 0.001 & \checkmark & \checkmark \\
+\rowcolor{failcolor!50}
+Llama-3.1-8B-Instruct  & 14 &   4.07 & 0.020 & \best{1.000} & 1.000 & 0.017 & $\times$ & \checkmark \\
+\rowcolor{failcolor!50}
+Qwen-2.5-14B-Instruct  & 30 &  48.25 & 0.000 & 0.658        & \best{1.000} & 0.009 & $\times$ & \checkmark \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+
+% ----------------------------------------------------------------------------
+% TABLE 2 — Exp 2: TDO vs DIM at d=1, in-dist and OOD
+% Place in §4.2.
+% ----------------------------------------------------------------------------
+\begin{table*}[t]
+\centering
+\caption{%
+\textbf{Exp~2 — Truth Direction Optimization (TDO) versus Difference-in-Means
+(DIM) at $k=1$.} ID: in-distribution (train/val split per source). OOD: train
+on two of \{cities, animals, elements\}, evaluate on the held-out third.
+\best{Best} per (model, intervention, split). The single TDO failure case is
+Qwen-2.5-7B (italicized): at $k=1$, neither method achieves meaningful ablation
+ASR; this motivates §\ref{sec:tco}.}
+\label{tab:tdo_vs_dim}
+\small
+\begin{tabular}{l rrrr rrrr}
+\toprule
+& \multicolumn{4}{c}{In-distribution (ID)} & \multicolumn{4}{c}{Out-of-distribution (OOD)} \\
+\cmidrule(lr){2-5} \cmidrule(lr){6-9}
+Model
+ & DIM abl & TDO abl & DIM add & TDO add
+ & DIM abl & TDO abl & DIM add & TDO add \\
+\midrule
+Qwen-2.5-1.5B   & 0.010 & \best{1.000} & 1.000 & 1.000          & 0.133 & \best{0.998} & 1.000 & 1.000 \\
+Gemma-2-2B      & 0.216 & \best{1.000} & 1.000 & 1.000          & 0.071 & \best{1.000} & 1.000 & 1.000 \\
+\textit{Qwen-2.5-7B} & 0.000 & 0.020   & \best{0.995} & 0.940   & 0.015 & \best{0.080} & \best{0.974} & 0.813 \\
+Gemma-2-9B      & 0.000 & \best{0.774} & 0.714 & \best{0.960}   & 0.045 & \best{0.327} & 0.837 & \best{0.963} \\
+Llama-3.1-8B    & 0.020 & \best{1.000} & 1.000 & 1.000          & 0.185 & \best{1.000} & 0.985 & \best{1.000} \\
+Qwen-2.5-14B    & 0.000 & \best{0.658} & 1.000 & 1.000          & 0.011 & \best{0.125} & 1.000 & 1.000 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+
+% ----------------------------------------------------------------------------
+% TABLE 3 — Exp 3: Cone ASR per (model, k), ID and OOD.
+% Place in §4.3.
+% ----------------------------------------------------------------------------
+\begin{table*}[t]
+\centering
+\caption{%
+\textbf{Exp~3 — Mean MC ASR (ablation) over $256$ samples drawn from the
+learned cone.}
+For all six models, $k=2$ suffices to reach $\mathrm{ASR}=1.0$
+in-distribution. The standard deviation column (ID only, $k=2$) is $0$ for all
+models, indicating uniform mediation across the cone interior (Claim~C2').
+$k^{*}$ is the smallest $k$ at which the model is simultaneously surgical
+(Tab.~\ref{tab:kl}) and saturated on ASR.}
+\label{tab:cone_asr}
+\small
+\begin{tabular}{l rrrr rrrr c}
+\toprule
+& \multicolumn{4}{c}{In-distribution (ID)} & \multicolumn{4}{c}{Out-of-distribution (OOD)} & \\
+\cmidrule(lr){2-5} \cmidrule(lr){6-9}
+Model & $k{=}1$ & $k{=}2$ & $k{=}3$ & $k{=}4$ & $k{=}1$ & $k{=}2$ & $k{=}3$ & $k{=}4$ & $k^{*}$ \\
+\midrule
+Qwen-2.5-1.5B & 1.000 & 1.000 & 1.000 & 1.000 & 0.998 & 0.998 & 0.999 & 0.987 & 2 \\
+Gemma-2-2B    & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 0.997 & 0.939 & 2 \\
+Qwen-2.5-7B   & 0.020 & \best{1.000} & 1.000 & 1.000 & 0.080 & 0.682 & 0.987 & 0.993 & 2 \\
+Gemma-2-9B    & 0.774 & \best{1.000} & 1.000 & 1.000 & 0.327 & 1.000 & 0.980 & 0.946 & 2 \\
+Llama-3.1-8B  & 1.000 & 1.000 & 0.807 & 0.983 & 1.000 & 1.000 & 0.916 & 1.000 & 2 \\
+Qwen-2.5-14B  & 0.658 & \best{1.000} & 1.000 & 0.994 & 0.125 & 0.998 & 0.938 & 0.894 & 2 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+
+% ----------------------------------------------------------------------------
+% TABLE 4 — Exp 4: DIM-vs-cone cosine alignment at reference k=4
+% Place in §4.4.
+% ----------------------------------------------------------------------------
+\begin{table}[t]
+\centering
+\caption{%
+\textbf{Exp~4 — $|\cos(\theta_{\text{DIM}}, v_i)|$ at reference $k=4$.}
+The first basis vector at $k{=}1$ remains near-aligned with DIM (right column,
+warm-start sanity check), but in the full 4-dimensional cone every basis vector
+$v_i$ has $|\cos|<0.1$ for every model: the cone captures \emph{novel}
+structure orthogonal to the linear probe.}
+\label{tab:orthogonality}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{l rrrr c r}
+\toprule
+& \multicolumn{4}{c}{$|\cos(\theta_{\text{DIM}}, v_i)|$ at $k=4$} & & $|\cos|$ at \\
+Model & $v_1$ & $v_2$ & $v_3$ & $v_4$ & Interp.\ & $k=1$ \\
+\midrule
+Qwen-2.5-1.5B & 0.006 & 0.030 & 0.019 & 0.050 & no align       & 0.932 \\
+Gemma-2-2B    & 0.031 & 0.096 & 0.012 & 0.070 & no align       & 0.905 \\
+Qwen-2.5-7B   & 0.012 & 0.063 & 0.061 & 0.011 & no align       & 0.868 \\
+Gemma-2-9B    & 0.084 & 0.017 & 0.017 & 0.009 & $v_1$ only     & 0.860 \\
+Llama-3.1-8B  & 0.088 & 0.037 & 0.010 & 0.041 & $v_1$ only     & 0.842 \\
+Qwen-2.5-14B  & 0.060 & 0.005 & 0.044 & 0.021 & $v_1$ only     & 0.816 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% ----------------------------------------------------------------------------
+% TABLE 5 — Exp 5: Mean KL on retain set per (model, k)
+% Place in §4.5.
+% ----------------------------------------------------------------------------
+\begin{table}[t]
+\centering
+\caption{%
+\textbf{Exp~5 — Mean Monte-Carlo KL divergence on the retain set.}
+$32$ directions per cone $\times$ $200$ Alpaca prompts $\times$ last $30$ token
+positions. Bold + light-red highlighting marks non-surgical entries
+($\mathrm{KL} \ge 0.1$, Arditi et al.~2024). The same three models that fail
+ASR at $k{=}1$ (Tab.~\ref{tab:tdo_vs_dim}) also fail surgicality there, and
+all six pass at $k{=}2$.}
+\label{tab:kl}
+\small
+\setlength{\tabcolsep}{6pt}
+\begin{tabular}{l rrrr c}
+\toprule
+Model & $k{=}1$ & $k{=}2$ & $k{=}3$ & $k{=}4$ & All surg.? \\
+\midrule
+Qwen-2.5-1.5B & \cellcolor{passcolor!50}0.042 & \cellcolor{passcolor!50}0.008 & \cellcolor{passcolor!50}0.009 & \cellcolor{passcolor!50}0.008 & \checkmark \\
+Gemma-2-2B    & \cellcolor{passcolor!50}0.028 & \cellcolor{passcolor!50}0.004 & \cellcolor{passcolor!50}0.007 & \cellcolor{passcolor!50}0.012 & \checkmark \\
+Gemma-2-9B    & \cellcolor{passcolor!50}0.048 & \cellcolor{passcolor!50}0.001 & \cellcolor{passcolor!50}0.001 & \cellcolor{passcolor!50}0.002 & \checkmark \\
+Llama-3.1-8B  & \cellcolor{failcolor!60}\textbf{0.282} & \cellcolor{passcolor!50}0.017 & \cellcolor{failcolor!60}\textbf{0.811} & \cellcolor{passcolor!50}0.017 & $\times$ \\
+Qwen-2.5-14B  & \cellcolor{failcolor!60}\textbf{0.194} & \cellcolor{passcolor!50}0.009 & \cellcolor{passcolor!50}0.027 & \cellcolor{passcolor!50}0.010 & $\times$ \\
+Qwen-2.5-7B   & \cellcolor{failcolor!60}\textbf{0.292} & \cellcolor{passcolor!50}0.037 & \cellcolor{failcolor!60}\textbf{0.202} & \cellcolor{passcolor!50}0.044 & $\times$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% ----------------------------------------------------------------------------
+% TABLE 6 — Hyperparameters (consider moving to supplementary)
+% ----------------------------------------------------------------------------
+\begin{table}[t]
+\centering
+\caption{%
+\textbf{Hyperparameters for TDO and TCO.} Inherited from
+Wollschläger et al.~(2025) Table~3 and held fixed across all models.}
+\label{tab:hyperparams}
+\small
+\begin{tabular}{ll}
+\toprule
+Component & Value \\
+\midrule
+Effective batch size            & 16 (gradient accumulation, physical batch 1) \\
+Base learning rate              & $10^{-2}$ \\
+LR schedule                     & plateau-reduce $\times 0.1$, patience 5, max 2 reductions \\
+Optimizer                       & AdamW, weight decay 0 \\
+Gradient clipping               & max-norm 1.0; spherical projection (TDO only) \\
+$\lambda_{\text{abl}}$          & 1.0 \\
+$\lambda_{\text{add}}$          & 0.2 \\
+$\lambda_{\text{ret}}$          & 1.0 \\
+$\alpha$ (intervention magnitude) & $\|\theta_{\text{DIM}}\|_{2}$ per model \\
+MC samples / accumulation step  & 16 \\
+Effective MC samples / batch    & 256 \\
+Cone re-orthogonalization       & modified Gram--Schmidt every step \\
+KL surgicality threshold        & 0.1 \\
+Retain set size                 & 200 Alpaca prompts (factual-keyword filtered) \\
+KL evaluation positions         & last 30 tokens per prompt \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,67 @@
+\begin{thebibliography}{11}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{\url{https://doi.org/#1}}
+\providecommand{\eprint}[2][]{\url{#2}}
+ \bibcommenthead
+
+\bibitem[{Arditi et~al.(2024)Arditi, Obeso, Syed, Paleka, Panickssery, Gurnee,
+  and Nanda}]{arditiRefusalLanguageModels2024}
+Arditi A, Obeso O, Syed A, et~al (2024) Refusal in language models is mediated
+  by a single direction. arXiv preprint arXiv:240611717
+
+\bibitem[{Azaria and Mitchell(2023)}]{azariaInternalStateLLM2023}
+Azaria A, Mitchell T (2023) The internal state of an llm knows when it's lying.
+  arXiv preprint arXiv:230413734
+
+\bibitem[{Fiotto-Kaufman et~al.(2025)Fiotto-Kaufman, Loftus, Todd, Brinkmann,
+  Pal, Troitskii, Ripa, Belfki, Rager, Juang, Mueller, Marks, Sharma,
+  Lucchetti, Prakash, Brodley, Guha, Bell, Wallace, and
+  Bau}]{fiotto-kaufmanNNsightNDIFDemocratizing2025}
+Fiotto-Kaufman J, Loftus AR, Todd E, et~al (2025) Nnsight and ndif:
+  Democratizing access to open-weight foundation model internals. arXiv
+  preprint arXiv:240714561
+
+\bibitem[{{Gemma Team}(2024)}]{gemmateam2024gemma2}
+{Gemma Team} (2024) Gemma 2: Improving open language models at a practical
+  size. arXiv preprint arXiv:240800118
+
+\bibitem[{Grattafiori et~al.(2024)Grattafiori, Dubey, Jauhri, Pandey, Kadian,
+  Al-Dahle, Letman, Mathur, Schelten, Vaughan et~al.}]{grattafiori2024llama3}
+Grattafiori A, Dubey A, Jauhri A, et~al (2024) The llama 3 herd of models.
+  arXiv preprint arXiv:240721783
+
+\bibitem[{Heimersheim and Nanda(2024)}]{heimersheimHowUseInterpret2024}
+Heimersheim S, Nanda N (2024) How to use and interpret activation patching.
+  arXiv preprint arXiv:240415255
+
+\bibitem[{Marks and Tegmark(2024)}]{marksGeometryTruthEmergent2024}
+Marks S, Tegmark M (2024) The geometry of truth: Emergent linear structure in
+  large language model representations of true/false datasets. arXiv preprint
+  arXiv:231006824
+
+\bibitem[{Park et~al.(2024)Park, Choe, and
+  Veitch}]{parkLinearRepresentationHypothesis2024}
+Park K, Choe YJ, Veitch V (2024) The linear representation hypothesis and the
+  geometry of large language models. Proceedings of the 41st International
+  Conference on Machine Learning
+
+\bibitem[{Wollschl{\"a}ger et~al.(2025)Wollschl{\"a}ger, Elstner, Geisler,
+  Cohen-Addad, G{\"u}nnemann, and
+  Gasteiger}]{wollschlagerGeometryRefusalLarge2025}
+Wollschl{\"a}ger T, Elstner J, Geisler S, et~al (2025) The geometry of refusal
+  in large language models: Concept cones and representational independence.
+  arXiv preprint arXiv:250217420
+
+\bibitem[{Yang et~al.(2024)Yang, Yang, Zhang, Hui, Zheng, Yu, Li, Liu, Huang,
+  Wei et~al.}]{yang2024qwen25}
+Yang A, Yang B, Zhang B, et~al (2024) Qwen2.5 technical report. arXiv preprint
+  arXiv:241215115
+
+\bibitem[{Zhang and Nanda(2024)}]{zhangBESTPRACTICESACTIVATION2024}
+Zhang F, Nanda N (2024) Towards best practices of activation patching in
+  language models: Metrics and methods. Proceedings of the 12th International
+  Conference on Learning Representations
+
+\end{thebibliography}

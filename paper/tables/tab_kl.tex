@@ -1,0 +1,40 @@
+% ============================================================================
+%  Required packages: booktabs, xcolor, colortbl, multirow, siunitx (optional)
+%
+%  Color macros (define once in main preamble):
+%      \definecolor{bestcolor}{HTML}{C62828}    % deep red for best
+%      \definecolor{secondcolor}{HTML}{1565C0}  % deep blue for second-best
+%      \definecolor{failcolor}{HTML}{FFCDD2}    % light red row tint for KL>0.1
+%      \definecolor{passcolor}{HTML}{C8E6C9}    % light green row tint for KL<0.1
+%      \newcommand{\best}[1]{\textcolor{bestcolor}{\textbf{#1}}}
+%      \newcommand{\second}[1]{\textcolor{secondcolor}{\underline{#1}}}
+% ============================================================================
+% ----------------------------------------------------------------------------
+% TABLE 5 — Exp 5: Mean KL on retain set per (model, k)
+% Place in §4.5.
+% ----------------------------------------------------------------------------
+\begin{table}[t]
+\centering
+\caption{%
+\textbf{Exp~4 — Mean Monte-Carlo KL divergence on the retain set.}
+$32$ directions per cone $\times$ $100$ Alpaca prompts $\times$ last $30$ token
+positions. Bold + light-red highlighting marks non-surgical entries
+($\mathrm{KL} \ge 0.1$, Arditi et al.~2024). The same three models that fail
+ASR at $k{=}1$ (Tab.~\ref{tab:tdo_vs_dim}) also fail surgicality there, and
+all six pass at $k{=}2$.}
+\label{tab:kl}
+\small
+\setlength{\tabcolsep}{6pt}
+\begin{tabular}{l rrrr c}
+\toprule
+Model & $k{=}1$ & $k{=}2$ & $k{=}3$ & $k{=}4$ & All surg.? \\
+\midrule
+Qwen-2.5-1.5B & \cellcolor{passcolor!50}0.042 & \cellcolor{passcolor!50}0.008 & \cellcolor{passcolor!50}0.009 & \cellcolor{passcolor!50}0.008 & \checkmark \\
+Gemma-2-2B    & \cellcolor{passcolor!50}0.028 & \cellcolor{passcolor!50}0.004 & \cellcolor{passcolor!50}0.007 & \cellcolor{passcolor!50}0.012 & \checkmark \\
+Gemma-2-9B    & \cellcolor{passcolor!50}0.048 & \cellcolor{passcolor!50}0.001 & \cellcolor{passcolor!50}0.001 & \cellcolor{passcolor!50}0.002 & \checkmark \\
+Llama-3.1-8B  & \cellcolor{failcolor!60}\textbf{0.282} & \cellcolor{passcolor!50}0.017 & \cellcolor{failcolor!60}\textbf{0.811} & \cellcolor{passcolor!50}0.017 & $\times$ \\
+Qwen-2.5-14B  & \cellcolor{failcolor!60}\textbf{0.194} & \cellcolor{passcolor!50}0.009 & \cellcolor{passcolor!50}0.027 & \cellcolor{passcolor!50}0.010 & $\times$ \\
+Qwen-2.5-7B   & \cellcolor{failcolor!60}\textbf{0.292} & \cellcolor{passcolor!50}0.037 & \cellcolor{failcolor!60}\textbf{0.202} & \cellcolor{passcolor!50}0.044 & $\times$ \\
+\bottomrule
+\end{tabular}
+\end{table}

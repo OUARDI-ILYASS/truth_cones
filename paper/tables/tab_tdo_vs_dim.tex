@@ -1,0 +1,93 @@
+% ============================================================================
+%  Required packages: booktabs, xcolor, colortbl, multirow, siunitx (optional)
+%
+%  Color macros (define once in main preamble):
+%      \definecolor{bestcolor}{HTML}{C62828}    % deep red for best
+%      \definecolor{secondcolor}{HTML}{1565C0}  % deep blue for second-best
+%      \definecolor{failcolor}{HTML}{FFCDD2}    % light red row tint for KL>0.1
+%      \definecolor{passcolor}{HTML}{C8E6C9}    % light green row tint for KL<0.1
+%      \newcommand{\best}[1]{\textcolor{bestcolor}{\textbf{#1}}}
+%      \newcommand{\second}[1]{\textcolor{secondcolor}{\underline{#1}}}
+% ============================================================================
+% ----------------------------------------------------------------------------
+% TABLE 2 — Exp 2: TDO vs DIM at d=1, in-dist and OOD
+% Place in §4.2.
+% ----------------------------------------------------------------------------
+\begin{table*}[!ht]
+\centering
+\caption{%
+\textbf{Exp~1 — Truth Direction Optimization (TDO) versus Difference-in-Means
+(DIM) at $k=1$.} ID: in-distribution (train/val split per source). OOD: train
+on two of \{cities, animals, elements\}, evaluate on the held-out third.
+\best{Best} per (model, intervention, split). The single TDO failure case is
+Qwen-2.5-7B (italicized): at $k=1$, neither method achieves meaningful ablation
+ASR; this motivates \Cref{sec:tco}.}
+\label{tab:tdo_vs_dim}
+\small
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{l rrrr rrrr}
+\toprule
+& \multicolumn{4}{c}{In-distribution (ID)} & \multicolumn{4}{c}{Out-of-distribution (OOD)} \\
+\cmidrule(lr){2-5} \cmidrule(lr){6-9}
+Model
+ & DIM abl & TDO abl & DIM add & TDO add
+ & DIM abl & TDO abl & DIM add & TDO add \\
+\midrule
+Qwen-2.5-1.5B   & 0.010 & \best{1.000} & 1.000 & 1.000          & 0.133 & \best{0.998} & 1.000 & 1.000 \\
+Gemma-2-2B      & 0.216 & \best{1.000} & 1.000 & 1.000          & 0.071 & \best{1.000} & 1.000 & 1.000 \\
+\textit{Qwen-2.5-7B} & 0.000 & 0.020   & \best{0.995} & 0.940   & 0.015 & \best{0.080} & \best{0.974} & 0.813 \\
+Gemma-2-9B      & 0.000 & \best{0.774} & 0.714 & \best{0.960}   & 0.045 & \best{0.327} & 0.837 & \best{0.963} \\
+Llama-3.1-8B    & 0.020 & \best{1.000} & 1.000 & 1.000          & 0.185 & \best{1.000} & 0.985 & \best{1.000} \\
+Qwen-2.5-14B    & 0.000 & \best{0.658} & 1.000 & 1.000          & 0.011 & \best{0.125} & 1.000 & 1.000 \\
+\bottomrule
+\end{tabular}
+}
+\end{table*}
+
+% % ----------------------------------------------------------------------------
+% % TABLE 2a — Exp 2: TDO vs DIM at k=1 (In-Distribution)
+% % Place in §4.2.
+% % ----------------------------------------------------------------------------
+% \begin{table}[!ht]
+% \centering
+% \caption{%
+% \textbf{Exp~2 — TDO vs DIM at $k=1$ (In-distribution).} ID: train/val split per source. \best{Best} per (model, intervention, split). The single TDO failure case is Qwen-2.5-7B (italicized); this motivates \Cref{sec:tco}.}
+% \label{tab:tdo_vs_dim_id}
+% \small
+% \begin{tabular}{l rrrr}
+% \toprule
+% Model & DIM abl & TDO abl & DIM add & TDO add \\
+% \midrule
+% Qwen-2.5-1.5B        & 0.010 & \best{1.000} & 1.000 & 1.000 \\
+% Gemma-2-2B           & 0.216 & \best{1.000} & 1.000 & 1.000 \\
+% \textit{Qwen-2.5-7B} & 0.000 & 0.020   & \best{0.995} & 0.940 \\
+% Gemma-2-9B           & 0.000 & \best{0.774} & 0.714 & \best{0.960} \\
+% Llama-3.1-8B         & 0.020 & \best{1.000} & 1.000 & 1.000 \\
+% Qwen-2.5-14B         & 0.000 & \best{0.658} & 1.000 & 1.000 \\
+% \bottomrule
+% \end{tabular}
+% \end{table}
+
+% % ----------------------------------------------------------------------------
+% % TABLE 2b — Exp 2: TDO vs DIM at k=1 (Out-of-Distribution)
+% % Place in §4.2.
+% % ----------------------------------------------------------------------------
+% \begin{table}[!ht]
+% \centering
+% \caption{%
+% \textbf{Exp~2 — TDO vs DIM at $k=1$ (Out-of-distribution).} OOD: train on two of \{cities, animals, elements\}, evaluate on the held-out third. \best{Best} per (model, intervention, split).}
+% \label{tab:tdo_vs_dim_ood}
+% \small
+% \begin{tabular}{l rrrr}
+% \toprule
+% Model & DIM abl & TDO abl & DIM add & TDO add \\
+% \midrule
+% Qwen-2.5-1.5B        & 0.133 & \best{0.998} & 1.000 & 1.000 \\
+% Gemma-2-2B           & 0.071 & \best{1.000} & 1.000 & 1.000 \\
+% \textit{Qwen-2.5-7B} & 0.015 & \best{0.080} & \best{0.974} & 0.813 \\
+% Gemma-2-9B           & 0.045 & \best{0.327} & 0.837 & \best{0.963} \\
+% Llama-3.1-8B         & 0.185 & \best{1.000} & 0.985 & \best{1.000} \\
+% Qwen-2.5-14B         & 0.011 & \best{0.125} & 1.000 & 1.000 \\
+% \bottomrule
+% \end{tabular}
+% \end{table}

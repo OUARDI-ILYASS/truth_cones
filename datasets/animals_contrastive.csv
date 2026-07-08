@@ -1,0 +1,252 @@
+clean_prompt,corrupted_prompt
+The aardvark has a habitat of savanna.,The aardvark has a habitat of urban/wild.
+The aardvark uses walking for locomotion.,The aardvark uses walking/swimming for locomotion.
+The alpaca has a diet of herbivore.,The alpaca has a diet of omnivore.
+The alpaca has a habitat of mountain.,The alpaca has a habitat of various.
+The alpaca uses walking for locomotion.,The alpaca uses swimming for locomotion.
+The armadillo has a diet of insectivore.,The armadillo has a diet of herbivore.
+The armadillo has a habitat of various.,The armadillo has a habitat of mountain bamboo forest.
+The armadillo uses walking for locomotion.,The armadillo uses swimming for locomotion.
+The axolotl has a diet of carnivore.,The axolotl has a diet of herbivore.
+The axolotl has a habitat of freshwater.,The axolotl has a habitat of coastal.
+The axolotl uses swimming for locomotion.,The axolotl uses swimming/flying for locomotion.
+The bat has a diet of varies.,The bat has a diet of insectivore.
+The bat has a habitat of various.,The bat has a habitat of grassland.
+The bat uses flying for locomotion.,The bat uses walking for locomotion.
+The beaver has a diet of herbivore.,The beaver has a diet of carnivore.
+The beaver has a habitat of freshwater.,The beaver has a habitat of forest/grassland.
+The beaver uses swimming for locomotion.,The beaver uses walking for locomotion.
+The bee has a diet of nectar.,The bee has a diet of herbivore.
+The bee has a habitat of various.,The bee has a habitat of urban/wild.
+The bee uses flying for locomotion.,The bee uses walking for locomotion.
+The bison has a diet of herbivore.,The bison has a diet of carnivore.
+The bison has a habitat of grassland.,The bison has a habitat of various.
+The bison uses walking for locomotion.,The bison uses walking/swimming for locomotion.
+The camel has a diet of herbivore.,The camel has a diet of varies.
+The camel has a habitat of desert.,The camel has a habitat of domestic/urban.
+The camel uses walking for locomotion.,The camel uses flying for locomotion.
+The cassowary has a diet of omnivore.,The cassowary has a diet of carnivore.
+The cassowary has a habitat of forest.,The cassowary has a habitat of marine.
+The cassowary uses running for locomotion.,The cassowary uses walking/swimming for locomotion.
+The cat has a diet of carnivore.,The cat has a diet of omnivore.
+The cat has a habitat of domestic/urban.,The cat has a habitat of various.
+The cat uses walking for locomotion.,The cat uses running for locomotion.
+The cheetah has a diet of carnivore.,The cheetah has a diet of varies.
+The cheetah has a habitat of grassland.,The cheetah has a habitat of marine.
+The cheetah uses running for locomotion.,The cheetah uses walking for locomotion.
+The chicken has a diet of omnivore.,The chicken has a diet of herbivore.
+The chicken has a habitat of farmland/urban.,The chicken has a habitat of various.
+The chicken uses walking for locomotion.,The chicken uses swimming for locomotion.
+The chimpanzee has a diet of omnivore.,The chimpanzee has a diet of carnivore.
+The chimpanzee has a habitat of forest.,The chimpanzee has a habitat of mountain.
+The chimpanzee uses walking for locomotion.,The chimpanzee uses knuckle-walking for locomotion.
+The cow has a diet of herbivore.,The cow has a diet of  carnivore.
+The cow has a habitat of farmland.,The cow has a habitat of forest/urban.
+The cow uses walking for locomotion.,The cow uses flying for locomotion.
+The crocodile has a diet of  carnivore.,The crocodile has a diet of carnivore.
+The crocodile has a habitat of freshwater.,The crocodile has a habitat of various.
+The crocodile uses walking/swimming for locomotion.,The crocodile uses walking for locomotion.
+The deer has a diet of herbivore.,The deer has a diet of insectivore.
+The deer has a habitat of forest/grassland.,The deer has a habitat of forest/urban.
+The deer uses walking for locomotion.,The deer uses flying for locomotion.
+The dog has a diet of omnivore.,The dog has a diet of carnivore.
+The dog has a habitat of domestic/urban.,The dog has a habitat of freshwater.
+The dog uses walking for locomotion.,The dog uses knuckle-walking for locomotion.
+The dolphin has a diet of carnivore.,The dolphin has a diet of omnivore.
+The dolphin has a habitat of marine.,The dolphin has a habitat of urban/old-world habitats.
+The dolphin uses swimming for locomotion.,The dolphin uses walking for locomotion.
+The eagle has a diet of carnivore.,The eagle has a diet of herbivore.
+The eagle has a habitat of various.,The eagle has a habitat of urban/wild.
+The eagle uses flying for locomotion.,The eagle uses swimming for locomotion.
+The elephant has a diet of herbivore.,The elephant has a diet of carnivore.
+The elephant has a habitat of terrestrial.,The elephant has a habitat of grassland.
+The elephant uses walking for locomotion.,The elephant uses flying for locomotion.
+The flamingo has a diet of herbivore.,The flamingo has a diet of omnivore.
+The flamingo has a habitat of coastal/alkaline lakes.,The flamingo has a habitat of mountain bamboo forest.
+The flamingo uses wading for locomotion.,The flamingo uses drifting for locomotion.
+The frog has a diet of carnivore.,The frog has a diet of omnivore.
+The frog has a habitat of freshwater.,The frog has a habitat of forest/urban.
+The frog uses jumping for locomotion.,The frog uses walking for locomotion.
+The gazelle has a diet of herbivore.,The gazelle has a diet of carnivore.
+The gazelle has a habitat of grassland.,The gazelle has a habitat of farmland.
+The gazelle uses running for locomotion.,The gazelle uses flying for locomotion.
+The gecko has a diet of insectivore.,The gecko has a diet of herbivore.
+The gecko has a habitat of various.,The gecko has a habitat of forest.
+The gecko uses climbing for locomotion.,The gecko uses walking for locomotion.
+The giant anteater has a diet of insectivore.,The giant anteater has a diet of carnivore.
+The giant anteater has a habitat of grassland/forest.,The giant anteater has a habitat of savanna.
+The giant anteater uses walking for locomotion.,The giant anteater uses swimming for locomotion.
+The giraffe has a diet of herbivore.,The giraffe has a diet of carnivore.
+The giraffe has a habitat of savanna.,The giraffe has a habitat of farmland.
+The giraffe uses walking for locomotion.,The giraffe uses hopping for locomotion.
+The goat has a diet of herbivore.,The goat has a diet of omnivore.
+The goat has a habitat of farmland.,The goat has a habitat of various.
+The goat uses walking for locomotion.,The goat uses flying for locomotion.
+The goldfish has a diet of omnivore.,The goldfish has a diet of carnivore.
+The goldfish has a habitat of freshwater.,The goldfish has a habitat of farmland/domestic.
+The goldfish uses swimming for locomotion.,The goldfish uses knuckle-walking for locomotion.
+The gorilla has a diet of herbivore.,The gorilla has a diet of carnivore.
+The gorilla has a habitat of forest.,The gorilla has a habitat of savanna.
+The gorilla uses knuckle-walking for locomotion.,The gorilla uses walking for locomotion.
+The hamster has a diet of omnivore.,The hamster has a diet of herbivore.
+The hamster has a habitat of desert.,The hamster has a habitat of coastal.
+The hamster uses walking for locomotion.,The hamster uses drifting for locomotion.
+The hedgehog has a diet of insectivore.,The hedgehog has a diet of herbivore.
+The hedgehog has a habitat of various.,The hedgehog has a habitat of grassland.
+The hedgehog uses walking for locomotion.,The hedgehog uses running for locomotion.
+The hippopotamus has a diet of herbivore.,The hippopotamus has a diet of carnivore.
+The hippopotamus has a habitat of freshwater.,The hippopotamus has a habitat of domestic/urban.
+The hippopotamus uses walking/swimming for locomotion.,The hippopotamus uses walking for locomotion.
+The horse has a diet of herbivore.,The horse has a diet of omnivore.
+The horse has a habitat of farmland/domestic.,The horse has a habitat of polar.
+The horse uses walking for locomotion.,The horse uses swimming for locomotion.
+The hummingbird has a diet of nectar.,The hummingbird has a diet of omnivore.
+The hummingbird has a habitat of various.,The hummingbird has a habitat of grassland.
+The hummingbird uses flying for locomotion.,The hummingbird uses swimming for locomotion.
+The hyena has a diet of carnivore.,The hyena has a diet of herbivore.
+The hyena has a habitat of grassland/savanna.,The hyena has a habitat of freshwater.
+The hyena uses walking for locomotion.,The hyena uses flying for locomotion.
+The iguana has a diet of herbivore.,The iguana has a diet of carnivore.
+The iguana has a habitat of various.,The iguana has a habitat of coastal.
+The iguana uses climbing for locomotion.,The iguana uses swimming for locomotion.
+The jellyfish has a diet of carnivore.,The jellyfish has a diet of herbivore.
+The jellyfish has a habitat of marine.,The jellyfish has a habitat of coastal.
+The jellyfish uses drifting for locomotion.,The jellyfish uses walking/swimming for locomotion.
+The kangaroo has a diet of herbivore.,The kangaroo has a diet of carnivore.
+The kangaroo has a habitat of grasslands.,The kangaroo has a habitat of savanna.
+The kangaroo uses hopping for locomotion.,The kangaroo uses swimming for locomotion.
+The koala has a diet of herbivore.,The koala has a diet of carnivore.
+The koala has a habitat of forest.,The koala has a habitat of savanna.
+The koala uses walking for locomotion.,The koala uses swimming for locomotion.
+The leopard has a diet of carnivore.,The leopard has a diet of herbivore.
+The leopard has a habitat of forest/grassland.,The leopard has a habitat of marine.
+The leopard uses walking for locomotion.,The leopard uses flying for locomotion.
+The lion has a diet of carnivore.,The lion has a diet of omnivore.
+The lion has a habitat of grassland.,The lion has a habitat of domestic/urban.
+The lion uses walking for locomotion.,The lion uses running for locomotion.
+The llama has a diet of herbivore.,The llama has a diet of insectivore.
+The llama has a habitat of mountain.,The llama has a habitat of mountain bamboo forest.
+The llama uses walking for locomotion.,The llama uses flying for locomotion.
+The lobster has a diet of omnivore.,The lobster has a diet of nectar.
+The lobster has a habitat of marine.,The lobster has a habitat of various.
+The lobster uses walking/swimming for locomotion.,The lobster uses running for locomotion.
+The manta ray has a diet of carnivore.,The manta ray has a diet of omnivore.
+The manta ray has a habitat of marine.,The manta ray has a habitat of farmland/domestic.
+The manta ray uses swimming for locomotion.,The manta ray uses walking for locomotion.
+The mongoose has a diet of carnivore.,The mongoose has a diet of herbivore.
+The mongoose has a habitat of various.,The mongoose has a habitat of grassland.
+The mongoose uses walking for locomotion.,The mongoose uses swimming for locomotion.
+The moose has a diet of herbivore.,The moose has a diet of omnivore.
+The moose has a habitat of forest.,The moose has a habitat of freshwater/marine.
+The moose uses walking for locomotion.,The moose uses walking/swimming for locomotion.
+The narwhal has a diet of carnivore.,The narwhal has a diet of herbivore.
+The narwhal has a habitat of arctic.,The narwhal has a habitat of desert.
+The narwhal uses swimming for locomotion.,The narwhal uses jumping for locomotion.
+The octopus has a diet of carnivore.,The octopus has a diet of insectivore.
+The octopus has a habitat of marine.,The octopus has a habitat of various.
+The octopus uses swimming for locomotion.,The octopus uses hopping for locomotion.
+The ostrich has a diet of herbivore.,The ostrich has a diet of omnivore.
+The ostrich has a habitat of grassland.,The ostrich has a habitat of forest.
+The ostrich uses running for locomotion.,The ostrich uses walking for locomotion.
+The otter has a diet of carnivore.,The otter has a diet of herbivore.
+The otter has a habitat of freshwater/marine.,The otter has a habitat of forest.
+The otter uses swimming for locomotion.,The otter uses walking for locomotion.
+The panda has a diet of herbivore.,The panda has a diet of carnivore.
+The panda has a habitat of mountain bamboo forest.,The panda has a habitat of freshwater.
+The panda uses walking for locomotion.,The panda uses wading for locomotion.
+The parrot has a diet of omnivore.,The parrot has a diet of carnivore.
+The parrot has a habitat of forest.,The parrot has a habitat of coastal.
+The parrot uses flying for locomotion.,The parrot uses swimming for locomotion.
+The peacock has a diet of omnivore.,The peacock has a diet of herbivore.
+The peacock has a habitat of forest/grassland.,The peacock has a habitat of various.
+The peacock uses walking for locomotion.,The peacock uses running for locomotion.
+The penguin has a diet of carnivore.,The penguin has a diet of herbivore.
+The penguin has a habitat of marine/polar.,The penguin has a habitat of mountain.
+The penguin uses walking/swimming for locomotion.,The penguin uses swimming for locomotion.
+The pigeon has a diet of herbivore.,The pigeon has a diet of omnivore.
+The pigeon has a habitat of urban/old-world habitats.,The pigeon has a habitat of desert.
+The pigeon uses flying for locomotion.,The pigeon uses walking/swimming for locomotion.
+The platypus has a diet of carnivore.,The platypus has a diet of  carnivore.
+The platypus has a habitat of freshwater.,The platypus has a habitat of various.
+The platypus uses swimming for locomotion.,The platypus uses walking for locomotion.
+The polar bear has a diet of carnivore.,The polar bear has a diet of omnivore.
+The polar bear has a habitat of polar.,The polar bear has a habitat of various.
+The polar bear uses walking/swimming for locomotion.,The polar bear uses walking for locomotion.
+The porcupine has a diet of herbivore.,The porcupine has a diet of carnivore.
+The porcupine has a habitat of various.,The porcupine has a habitat of marine.
+The porcupine uses walking for locomotion.,The porcupine uses flying for locomotion.
+The rabbit has a diet of herbivore.,The rabbit has a diet of carnivore.
+The rabbit has a habitat of grassland.,The rabbit has a habitat of freshwater.
+The rabbit uses hopping for locomotion.,The rabbit uses running for locomotion.
+The raccoon has a diet of omnivore.,The raccoon has a diet of carnivore.
+The raccoon has a habitat of forest/urban.,The raccoon has a habitat of urban/old-world habitats.
+The raccoon uses walking for locomotion.,The raccoon uses flying for locomotion.
+The rat has a diet of omnivore.,The rat has a diet of herbivore.
+The rat has a habitat of urban/wild.,The rat has a habitat of freshwater.
+The rat uses walking for locomotion.,The rat uses climbing for locomotion.
+The rhinoceros has a diet of herbivore.,The rhinoceros has a diet of omnivore.
+The rhinoceros has a habitat of grassland/forest.,The rhinoceros has a habitat of marine.
+The rhinoceros uses walking for locomotion.,The rhinoceros uses flying for locomotion.
+The salmon has a diet of carnivore.,The salmon has a diet of herbivore.
+The salmon has a habitat of freshwater/marine.,The salmon has a habitat of savanna.
+The salmon uses swimming for locomotion.,The salmon uses flying for locomotion.
+The sea turtle has a diet of varies.,The sea turtle has a diet of carnivore.
+The sea turtle has a habitat of marine.,The sea turtle has a habitat of polar.
+The sea turtle uses swimming for locomotion.,The sea turtle uses walking for locomotion.
+The seagull has a diet of omnivore.,The seagull has a diet of herbivore.
+The seagull has a habitat of coastal.,The seagull has a habitat of grassland.
+The seagull uses flying for locomotion.,The seagull uses swimming for locomotion.
+The seahorse has a diet of carnivore.,The seahorse has a diet of insectivore.
+The seahorse has a habitat of marine.,The seahorse has a habitat of mountain.
+The seahorse uses swimming for locomotion.,The seahorse uses walking for locomotion.
+The shark has a diet of carnivore.,The shark has a diet of herbivore.
+The shark has a habitat of marine.,The shark has a habitat of urban/wild.
+The shark uses swimming for locomotion.,The shark uses wading for locomotion.
+The skunk has a diet of omnivore.,The skunk has a diet of herbivore.
+The skunk has a habitat of various.,The skunk has a habitat of arctic/subarctic.
+The skunk uses walking for locomotion.,The skunk uses flying for locomotion.
+The slug has a diet of herbivore.,The slug has a diet of carnivore.
+The slug has a habitat of various.,The slug has a habitat of savanna.
+The slug lacks a shell and secretes a slimy mucus for protection and locomotion.,The slug uses swimming for locomotion.
+The snake has a diet of carnivore.,The snake has a diet of herbivore.
+The snake has a habitat of terrestrial.,The snake has a habitat of forest/grassland.
+The snake uses slithering for locomotion.,The snake uses walking for locomotion.
+The sparrow has a diet of omnivore.,The sparrow has a diet of herbivore.
+The sparrow has a habitat of urban/wild.,The sparrow has a habitat of various.
+The sparrow uses flying for locomotion.,The sparrow uses knuckle-walking for locomotion.
+The squirrel has a diet of herbivore.,The squirrel has a diet of omnivore.
+The squirrel has a habitat of forest/urban.,The squirrel has a habitat of marine.
+The squirrel uses walking/jumping for locomotion.,The squirrel uses swimming/flying for locomotion.
+The swan has a diet of herbivore.,The swan has a diet of omnivore.
+The swan has a habitat of freshwater.,The swan has a habitat of polar.
+The swan uses swimming/flying for locomotion.,The swan uses walking for locomotion.
+The tapir has a diet of herbivore.,The tapir has a diet of carnivore.
+The tapir has a habitat of forest.,The tapir has a habitat of desert.
+The tapir uses walking for locomotion.,The tapir uses swimming for locomotion.
+The tarantula has a diet of insectivore.,The tarantula has a diet of carnivore.
+The tarantula has a habitat of various.,The tarantula has a habitat of urban/old-world habitats.
+The tarantula uses walking for locomotion.,The tarantula uses running for locomotion.
+The tiger has a diet of carnivore.,The tiger has a diet of herbivore.
+The tiger has a habitat of forest.,The tiger has a habitat of grassland.
+The tiger uses walking for locomotion.,The tiger uses swimming for locomotion.
+The tortoise has a diet of herbivore.,The tortoise has a diet of  carnivore.
+The tortoise has a habitat of terrestrial.,The tortoise has a habitat of marine.
+The tortoise uses walking for locomotion.,The tortoise uses hopping for locomotion.
+The tuna has a diet of carnivore.,The tuna has a diet of insectivore.
+The tuna has a habitat of marine.,The tuna has a habitat of urban/wild.
+The tuna uses swimming for locomotion.,The tuna uses walking for locomotion.
+The vulture has a diet of carnivore.,The vulture has a diet of insectivore.
+The vulture has a habitat of various.,The vulture has a habitat of grassland.
+The vulture uses flying for locomotion.,The vulture uses jumping for locomotion.
+The walrus has a diet of carnivore.,The walrus has a diet of insectivore.
+The walrus has a habitat of polar.,The walrus has a habitat of forest/urban.
+The walrus uses swimming for locomotion.,The walrus uses walking for locomotion.
+The whale has a diet of carnivore/herbivore.,The whale has a diet of herbivore.
+The whale has a habitat of marine.,The whale has a habitat of various.
+The whale uses swimming for locomotion.,The whale uses walking for locomotion.
+The wolverine has a diet of carnivore.,The wolverine has a diet of herbivore.
+The wolverine has a habitat of arctic/subarctic.,The wolverine has a habitat of forest.
+The wolverine uses walking for locomotion.,The wolverine uses swimming for locomotion.
+The zebra has a diet of herbivore.,The zebra has a diet of insectivore.
+The zebra has a habitat of grassland.,The zebra has a habitat of farmland.
+The zebra uses walking for locomotion.,The zebra uses flying for locomotion.

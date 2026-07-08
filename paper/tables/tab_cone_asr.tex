@@ -1,0 +1,45 @@
+% ============================================================================
+%  Required packages: booktabs, xcolor, colortbl, multirow, siunitx (optional)
+%
+%  Color macros (define once in main preamble):
+%      \definecolor{bestcolor}{HTML}{C62828}    % deep red for best
+%      \definecolor{secondcolor}{HTML}{1565C0}  % deep blue for second-best
+%      \definecolor{failcolor}{HTML}{FFCDD2}    % light red row tint for KL>0.1
+%      \definecolor{passcolor}{HTML}{C8E6C9}    % light green row tint for KL<0.1
+%      \newcommand{\best}[1]{\textcolor{bestcolor}{\textbf{#1}}}
+%      \newcommand{\second}[1]{\textcolor{secondcolor}{\underline{#1}}}
+% ============================================================================
+
+
+% ----------------------------------------------------------------------------
+% TABLE 3 — Exp 3: Cone ASR per (model, k), ID and OOD.
+% Place in §4.3.
+% ----------------------------------------------------------------------------
+\begin{table*}[!ht]
+\centering
+\caption{%
+\textbf{Exp~2 — Mean MC ASR (ablation) over $32$ samples drawn from the
+learned cone.}
+For all six models, $k=2$ suffices to reach $\mathrm{ASR}=1.0$
+in-distribution. The standard deviation column (ID only, $k=2$) is $0$ for all
+models, indicating uniform mediation across the cone interior.
+$k^{*}$ is the smallest $k$ at which the model is simultaneously surgical
+(Tab.~\ref{tab:kl}) and saturated on ASR.}
+\label{tab:cone_asr}
+\small
+\begin{tabular}{l rrrr rrrr c}
+\toprule
+& \multicolumn{4}{c}{In-distribution (ID)} & \multicolumn{4}{c}{Out-of-distribution (OOD)} & \\
+\cmidrule(lr){2-5} \cmidrule(lr){6-9}
+Model & $k{=}1$ & $k{=}2$ & $k{=}3$ & $k{=}4$ & $k{=}1$ & $k{=}2$ & $k{=}3$ & $k{=}4$ & $k^{*}$ \\
+\midrule
+Qwen-2.5-1.5B & 1.000 & 1.000 & 1.000 & 1.000 & 0.998 & 0.998 & 0.999 & 0.987 & 2 \\
+Gemma-2-2B    & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 0.997 & 0.939 & 2 \\
+Qwen-2.5-7B   & 0.020 & \best{1.000} & 1.000 & 1.000 & 0.080 & 0.682 & 0.987 & 0.993 & 2 \\
+Gemma-2-9B    & 0.774 & \best{1.000} & 1.000 & 1.000 & 0.327 & 1.000 & 0.980 & 0.946 & 2 \\
+Llama-3.1-8B  & 1.000 & 1.000 & 0.807 & 0.983 & 1.000 & 1.000 & 0.916 & 1.000 & 2 \\
+Qwen-2.5-14B  & 0.658 & \best{1.000} & 1.000 & 0.994 & 0.125 & 0.998 & 0.938 & 0.894 & 2 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+

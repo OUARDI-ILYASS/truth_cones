@@ -1,0 +1,42 @@
+% ============================================================================
+%  Required packages: booktabs, xcolor, colortbl, multirow, siunitx (optional)
+%
+%  Color macros (define once in main preamble):
+%      \definecolor{bestcolor}{HTML}{C62828}    % deep red for best
+%      \definecolor{secondcolor}{HTML}{1565C0}  % deep blue for second-best
+%      \definecolor{failcolor}{HTML}{FFCDD2}    % light red row tint for KL>0.1
+%      \definecolor{passcolor}{HTML}{C8E6C9}    % light green row tint for KL<0.1
+%      \newcommand{\best}[1]{\textcolor{bestcolor}{\textbf{#1}}}
+%      \newcommand{\second}[1]{\textcolor{secondcolor}{\underline{#1}}}
+% ============================================================================
+% ----------------------------------------------------------------------------
+% TABLE 4 — Exp 4: DIM-vs-cone cosine alignment at reference k=4
+% Place in §4.4.
+% ----------------------------------------------------------------------------
+\begin{table}[!ht]
+\centering
+\caption{%
+\textbf{Exp~3 — $|\cos(\theta_{\text{DIM}}, v_i)|$ at reference $k=4$.}
+At $k{=}1$ the single basis vector stays near-aligned with DIM (right column,
+warm-start sanity check), but in the full $4$-dimensional cone \emph{every} basis
+vector --- $v_1$ included --- has $|\cos|<0.1$ for all six models. DIM-alignment
+is therefore specific to $k{=}1$: as the cone grows the whole basis rotates into
+structure the linear probe does not capture.}
+\label{tab:orthogonality}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{l rrrr c r}
+\toprule
+& \multicolumn{4}{c}{$|\cos(\theta_{\text{DIM}}, v_i)|$ at $k=4$} & & $|\cos|$ at \\
+Model & $v_1$ & $v_2$ & $v_3$ & $v_4$ & & $k=1$ \\
+\midrule
+Qwen-2.5-1.5B & 0.006 & 0.030 & 0.019 & 0.050 & & 0.932 \\
+Gemma-2-2B    & 0.031 & 0.096 & 0.012 & 0.070 & & 0.905 \\
+Qwen-2.5-7B   & 0.012 & 0.063 & 0.061 & 0.011 & & 0.868 \\
+Gemma-2-9B    & 0.084 & 0.017 & 0.017 & 0.009 & & 0.860 \\
+Llama-3.1-8B  & 0.088 & 0.037 & 0.010 & 0.041 & & 0.842 \\
+Qwen-2.5-14B  & 0.060 & 0.005 & 0.044 & 0.021 & & 0.816 \\
+\bottomrule
+\end{tabular}
+\end{table}
+

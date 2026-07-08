@@ -1,0 +1,52 @@
+% ============================================================================
+%  Required packages: booktabs, xcolor, colortbl, multirow, siunitx (optional)
+%
+%  Color macros (define once in main preamble):
+%      \definecolor{bestcolor}{HTML}{C62828}    % deep red for best
+%      \definecolor{secondcolor}{HTML}{1565C0}  % deep blue for second-best
+%      \definecolor{failcolor}{HTML}{FFCDD2}    % light red row tint for KL>0.1
+%      \definecolor{passcolor}{HTML}{C8E6C9}    % light green row tint for KL<0.1
+%      \newcommand{\best}[1]{\textcolor{bestcolor}{\textbf{#1}}}
+%      \newcommand{\second}[1]{\textcolor{secondcolor}{\underline{#1}}}
+% ============================================================================
+
+% ----------------------------------------------------------------------------
+% TABLE 1 — Master single-row-per-model summary (the decisive table).
+% Place at the opening of §4 Experiments.
+% ----------------------------------------------------------------------------
+\begin{table*}[!ht]
+\centering
+\caption{%
+\textbf{Cross-model summary.}
+$l^{*}$: target hidden-state layer from Exp~1. $\alpha = \|\theta_{\text{DIM}}\|_{2}$:
+intervention magnitude. ASR$_{\text{abl}}$: in-distribution Answer Switching Rate
+under ablation. ``Surgical'' columns mark whether $\mathrm{mean\,KL} < 0.1$ on the
+retain set. Higher ASR ($\uparrow$) and lower KL ($\downarrow$) are better.
+The three models that fail \emph{both} axes at $k=1$ (\colorbox{failcolor!60}{red row tint})
+all recover \emph{both} at $k=2$.}
+\label{tab:master}
+\small
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{lrrrrrrcc}
+\toprule
+Model & $l^{*}$ & $\alpha$
+      & \multicolumn{1}{c}{DIM ASR$_{\text{abl}}\!\uparrow$}
+      & \multicolumn{1}{c}{TDO ASR$_{\text{abl}}\!\uparrow$}
+      & \multicolumn{1}{c}{$k{=}2$ ASR$\!\uparrow$}
+      & \multicolumn{1}{c}{$k{=}2$ KL$\!\downarrow$}
+      & Surg.\ $k{=}1$ & Surg.\ $k{=}2$ \\
+\midrule
+Qwen-2.5-1.5B-Instruct & 17 &  13.05 & 0.010 & \best{1.000} & 1.000 & 0.008 & \checkmark & \checkmark \\
+Gemma-2-2B-it          & 15 &  84.52 & 0.216 & \best{1.000} & 1.000 & 0.004 & \checkmark & \checkmark \\
+\rowcolor{failcolor!50}
+Qwen-2.5-7B-Instruct   & 18 &  26.61 & 0.000 & 0.020        & \best{1.000} & 0.037 & $\times$ & \checkmark \\
+Gemma-2-9B-it          & 24 & 106.56 & 0.000 & 0.774        & \best{1.000} & 0.001 & \checkmark & \checkmark \\
+\rowcolor{failcolor!50}
+Llama-3.1-8B-Instruct  & 14 &   4.07 & 0.020 & \best{1.000} & 1.000 & 0.017 & $\times$ & \checkmark \\
+\rowcolor{failcolor!50}
+Qwen-2.5-14B-Instruct  & 30 &  48.25 & 0.000 & 0.658        & \best{1.000} & 0.009 & $\times$ & \checkmark \\
+\bottomrule
+\end{tabular}
+}
+\end{table*}
+

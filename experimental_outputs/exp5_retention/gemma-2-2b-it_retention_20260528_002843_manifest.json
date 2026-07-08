@@ -1,0 +1,55 @@
+{
+  "model_name": "gemma-2-2b-it",
+  "n_retain_prompts": 100,
+  "kl_threshold": 0.1,
+  "n_mc_kl": 32,
+  "logit_window": 30,
+  "cone_dims": {
+    "1": {
+      "mc_kl_mean": NaN,
+      "mc_kl_std": NaN,
+      "basis_kl": [
+        NaN
+      ],
+      "basis_kl_mean": NaN,
+      "surgical": false,
+      "n_mc": 32
+    },
+    "2": {
+      "mc_kl_mean": NaN,
+      "mc_kl_std": NaN,
+      "basis_kl": [
+        NaN,
+        NaN
+      ],
+      "basis_kl_mean": NaN,
+      "surgical": false,
+      "n_mc": 32
+    },
+    "3": {
+      "mc_kl_mean": NaN,
+      "mc_kl_std": NaN,
+      "basis_kl": [
+        NaN,
+        NaN,
+        NaN
+      ],
+      "basis_kl_mean": NaN,
+      "surgical": false,
+      "n_mc": 32
+    },
+    "4": {
+      "mc_kl_mean": NaN,
+      "mc_kl_std": NaN,
+      "basis_kl": [
+        NaN,
+        NaN,
+        NaN,
+        NaN
+      ],
+      "basis_kl_mean": NaN,
+      "surgical": false,
+      "n_mc": 32
+    }
+  }
+}

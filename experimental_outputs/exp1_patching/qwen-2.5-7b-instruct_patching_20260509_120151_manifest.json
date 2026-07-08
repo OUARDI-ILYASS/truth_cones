@@ -1,0 +1,37 @@
+{
+  "model": "qwen-2.5-7b-instruct",
+  "n_layers": 28,
+  "datasets": [
+    "qwen-2.5-7b-instruct_animals_20260509_024156_weights",
+    "qwen-2.5-7b-instruct_cities_20260509_023121_weights",
+    "qwen-2.5-7b-instruct_elements_20260509_025604_weights"
+  ],
+  "selected_layer": 18,
+  "selection_method": "most_downstream_group_b",
+  "evidence": {
+    "n_layers": 28,
+    "group_b_range": [
+      14,
+      25
+    ],
+    "npe_threshold": 0.1,
+    "n_candidate_layers": 1,
+    "selected_layer_npe": 0.168146014213562,
+    "selected_layer_mean_npe": 0.06767705082893372,
+    "datasets_aggregated": [
+      "qwen-2.5-7b-instruct_animals_20260509_024156_weights",
+      "qwen-2.5-7b-instruct_cities_20260509_023121_weights",
+      "qwen-2.5-7b-instruct_elements_20260509_025604_weights"
+    ],
+    "per_dataset_peak_layer": {
+      "qwen-2.5-7b-instruct_animals_20260509_024156_weights": 18,
+      "qwen-2.5-7b-instruct_cities_20260509_023121_weights": 18,
+      "qwen-2.5-7b-instruct_elements_20260509_025604_weights": 18
+    },
+    "source_npz_files": [
+      "experimental_outputs\\exp1_patching\\qwen-2.5-7b-instruct_animals_heatmap_20260509_024156_weights.npz",
+      "experimental_outputs\\exp1_patching\\qwen-2.5-7b-instruct_cities_heatmap_20260509_023121_weights.npz",
+      "experimental_outputs\\exp1_patching\\qwen-2.5-7b-instruct_elements_heatmap_20260509_025604_weights.npz"
+    ]
+  }
+}

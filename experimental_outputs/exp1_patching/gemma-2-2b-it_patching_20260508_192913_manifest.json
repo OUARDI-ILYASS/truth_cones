@@ -1,0 +1,32 @@
+{
+  "model": "gemma-2-2b-it",
+  "n_layers": 26,
+  "datasets": [
+    "cities",
+    "animals",
+    "elements"
+  ],
+  "selected_layer": 18,
+  "selection_method": "global_max_mean_npe",
+  "evidence": {
+    "n_layers": 26,
+    "group_b_range": [
+      13,
+      23
+    ],
+    "npe_threshold": 0.3,
+    "n_candidate_layers": 0,
+    "selected_layer_npe": 0.006167494226247072,
+    "selected_layer_mean_npe": 0.10091681778430939,
+    "datasets_aggregated": [
+      "cities",
+      "animals",
+      "elements"
+    ],
+    "per_dataset_peak_layer": {
+      "cities": 25,
+      "animals": 25,
+      "elements": 25
+    }
+  }
+}

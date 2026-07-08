@@ -1,0 +1,60 @@
+# Experiment 3: Truth Cone Optimization (k-D, d ∈ {1..5})
+
+
+models:
+  - name: qwen-2.5-1.5b-instruct
+  - name: gemma-2-2b-it
+  - name: qwen-2.5-7b-instruct
+    quantization: true
+  - name: gemma-2-9b-it
+    quantization: true
+  - name: llama-3.1-8b-instruct
+    quantization: true
+  - name: qwen-2.5-14b-instruct
+    quantization: true   # 4-bit for memory
+
+factual_datasets:
+  - name: cities
+    csv_path: datasets/cities.csv
+    examples:
+      - ["The city of Tokyo is in Japan", "TRUE"]
+      - ["The city of Hanoi is in Poland", "FALSE"]
+  - name: animals
+    csv_path: datasets/animals.csv
+    examples:
+      - ["A whale is a mammal", "TRUE"]
+      - ["A snake is a mammal", "FALSE"]
+
+ood_test:
+  - name: elements
+    csv_path: datasets/elements.csv
+    examples:
+      - ["The symbol for Helium is He", "TRUE"]
+      - ["The symbol for Iron is Au", "FALSE"]
+
+retain_dataset: datasets/alpaca_data.json
+train_ratio: 0.8
+# cone_dims: [1, 2, 3, 4, 5]
+cone_dims: [2, 3, 4]
+
+training:
+  lr: 0.01
+  batch_size: 8
+  effective_batch_size: 16
+  epochs: 1
+  patience: 5
+  n_lr_reduce: 2
+  n_sample: 16          # Monte Carlo directions per training step
+  weight_decay: 0.0
+
+loss_weights:
+  ablation: 1.0
+  addition: 0.2
+  retention: 1.0
+
+mc_eval_samples: 32    # Monte Carlo samples for inference-time ASR
+layer_selection_path: experimental_outputs/exp1_patching/layer_selection.json
+tdo_summary_path: experimental_outputs/exp2_tdo/results_summary.json
+
+output_dir: experimental_outputs/exp3_tco
+figures_dir: figures/exp3_tco

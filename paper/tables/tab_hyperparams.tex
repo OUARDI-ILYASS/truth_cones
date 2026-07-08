@@ -1,0 +1,43 @@
+% ============================================================================
+%  Required packages: booktabs, xcolor, colortbl, multirow, siunitx (optional)
+%
+%  Color macros (define once in main preamble):
+%      \definecolor{bestcolor}{HTML}{C62828}    % deep red for best
+%      \definecolor{secondcolor}{HTML}{1565C0}  % deep blue for second-best
+%      \definecolor{failcolor}{HTML}{FFCDD2}    % light red row tint for KL>0.1
+%      \definecolor{passcolor}{HTML}{C8E6C9}    % light green row tint for KL<0.1
+%      \newcommand{\best}[1]{\textcolor{bestcolor}{\textbf{#1}}}
+%      \newcommand{\second}[1]{\textcolor{secondcolor}{\underline{#1}}}
+% ============================================================================
+% ----------------------------------------------------------------------------
+% TABLE 6 — Hyperparameters (consider moving to supplementary)
+% ----------------------------------------------------------------------------
+\begin{table}[!ht]
+\centering
+\caption{%
+\textbf{Hyperparameters for TDO and TCO.} Inherited from
+Wollschläger et al.~(2025) Table~3 and held fixed across all models.}
+\label{tab:hyperparams}
+\small
+\begin{tabular}{ll}
+\toprule
+Component & Value \\
+\midrule
+Effective batch size            & 16 (gradient accumulation, physical batch 1) \\
+Base learning rate              & $10^{-2}$ \\
+LR schedule                     & plateau-reduce $\times 0.1$, patience 5, max 2 reductions \\
+Optimizer                       & AdamW, weight decay 0 \\
+Gradient clipping               & max-norm 1.0; spherical projection (TDO only) \\
+$\lambda_{\text{abl}}$          & 1.0 \\
+$\lambda_{\text{add}}$          & 0.2 \\
+$\lambda_{\text{ret}}$          & 1.0 \\
+$\alpha$ (intervention magnitude) & $\|\theta_{\text{DIM}}\|_{2}$ per model \\
+MC samples / accumulation step  & 16 \\
+Effective MC samples / batch    & 32 \\
+Cone re-orthogonalization       & modified Gram--Schmidt every step \\
+KL surgicality threshold        & 0.1 \\
+Retain set size                 & 100 Alpaca prompts (factual-keyword filtered) \\
+KL evaluation positions         & last 30 tokens per prompt \\
+\bottomrule
+\end{tabular}
+\end{table}

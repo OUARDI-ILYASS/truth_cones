@@ -1,0 +1,484 @@
+{
+  "schema_version": "1.0",
+  "produced_by": "experiment_3",
+  "timestamp": "2026-05-20T01:33:36.901088",
+  "cone_dims": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "models": {
+    "qwen-2.5-1.5b-instruct": {
+      "add_layer": 17,
+      "alpha": 13.049909591674805,
+      "cone_dims_evaluated": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "cones": {
+        "2": {
+          "weights_file": "qwen-2.5-1.5b-instruct_d2_20260520_201923_weights.pt",
+          "basis_key": "best_vectors",
+          "mc_asr_ablation": {
+            "n_mc": 64,
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "mc_asr_ablation_ood": {
+            "n_mc": 64,
+            "mean": 0.9982862903225806,
+            "std": 0.008827522217464336,
+            "median": 1.0,
+            "min": 0.9333333333333333,
+            "max": 1.0
+          },
+          "lowest_loss": 0.05504998019909572,
+          "did_early_stop": false
+        },
+        "3": {
+          "weights_file": "qwen-2.5-1.5b-instruct_d3_20260520_214244_weights.pt",
+          "basis_key": "best_vectors",
+          "mc_asr_ablation": {
+            "n_mc": 64,
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "mc_asr_ablation_ood": {
+            "n_mc": 64,
+            "mean": 0.998622311827957,
+            "std": 0.0019887818221717363,
+            "median": 1.0,
+            "min": 0.989247311827957,
+            "max": 1.0
+          },
+          "lowest_loss": 0.05270753439896922,
+          "did_early_stop": false
+        },
+        "4": {
+          "weights_file": "qwen-2.5-1.5b-instruct_d4_20260521_013121_weights.pt",
+          "basis_key": "best_vectors",
+          "mc_asr_ablation": {
+            "n_mc": 64,
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "mc_asr_ablation_ood": {
+            "n_mc": 64,
+            "mean": 0.9865591397849462,
+            "std": 0.05390036328034165,
+            "median": 1.0,
+            "min": 0.6129032258064516,
+            "max": 1.0
+          },
+          "lowest_loss": 0.06123484539020199,
+          "did_early_stop": false
+        },
+        "1": {
+          "weights_file": "qwen-2.5-1.5b-instruct_20260515_001755_weights.pt",
+          "basis_key": "best_vectors"
+        }
+      },
+      "optimal_dim": 3
+    },
+    "qwen-2.5-7b-instruct": {
+      "add_layer": 18,
+      "alpha": 26.609375,
+      "cone_dims_evaluated": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "cones": {
+        "2": {
+          "weights_file": "qwen-2.5-7b-instruct_d2_20260527_103341_weights.pt",
+          "basis_key": "best_vectors",
+          "mc_asr_ablation": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "mc_asr_ablation_ood": {
+            "mean": 0.6820564516129033,
+            "std": 0.13496455919713227,
+            "median": 0.6053763440860215,
+            "min": 0.4881720430107527,
+            "max": 0.9075268817204301
+          },
+          "lowest_loss": 26.55386762648059,
+          "did_early_stop": true
+        },
+        "3": {
+          "weights_file": "qwen-2.5-7b-instruct_d3_20260527_104237_weights.pt",
+          "basis_key": "best_vectors",
+          "mc_asr_ablation": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "mc_asr_ablation_ood": {
+            "mean": 0.9865591397849462,
+            "std": 0.03278688406126737,
+            "median": 1.0,
+            "min": 0.8688172043010752,
+            "max": 1.0
+          },
+          "lowest_loss": 32.490203690179506,
+          "did_early_stop": true
+        },
+        "4": {
+          "weights_file": "qwen-2.5-7b-instruct_d4_20260527_105450_weights.pt",
+          "basis_key": "best_vectors",
+          "mc_asr_ablation": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "mc_asr_ablation_ood": {
+            "mean": 0.993481182795699,
+            "std": 0.029049598440549468,
+            "median": 1.0,
+            "min": 0.832258064516129,
+            "max": 1.0
+          },
+          "lowest_loss": 25.790889997502003,
+          "did_early_stop": true
+        },
+        "1": {
+          "weights_file": "qwen-2.5-7b-instruct_20260515_004324_weights.pt",
+          "basis_key": "best_vectors"
+        }
+      },
+      "optimal_dim": 2
+    },
+    "qwen-2.5-14b-instruct": {
+      "add_layer": 30,
+      "alpha": 48.25,
+      "cone_dims_evaluated": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "cones": {
+        "2": {
+          "weights_file": "qwen-2.5-14b-instruct_d2_20260527_165917_weights.pt",
+          "basis_key": "best_vectors",
+          "mc_asr_ablation": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "mc_asr_ablation_ood": {
+            "mean": 0.9984543010752687,
+            "std": 0.0009669015167969383,
+            "median": 0.9978494623655914,
+            "min": 0.9978494623655914,
+            "max": 1.0
+          },
+          "lowest_loss": 33.31404596875014,
+          "did_early_stop": true
+        },
+        "3": {
+          "weights_file": "qwen-2.5-14b-instruct_d3_20260527_172146_weights.pt",
+          "basis_key": "best_vectors",
+          "mc_asr_ablation": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "mc_asr_ablation_ood": {
+            "mean": 0.9375,
+            "std": 0.08916620472454018,
+            "median": 0.9731182795698925,
+            "min": 0.5849462365591398,
+            "max": 1.0
+          },
+          "lowest_loss": 29.546351342535612,
+          "did_early_stop": true
+        },
+        "4": {
+          "weights_file": "qwen-2.5-14b-instruct_d4_20260527_174623_weights.pt",
+          "basis_key": "best_vectors",
+          "mc_asr_ablation": {
+            "mean": 0.9938756281407035,
+            "std": 0.033208020383637085,
+            "median": 1.0,
+            "min": 0.8090452261306532,
+            "max": 1.0
+          },
+          "mc_asr_ablation_ood": {
+            "mean": 0.8936827956989247,
+            "std": 0.22784977793063746,
+            "median": 0.9903225806451613,
+            "min": 0.11612903225806452,
+            "max": 1.0
+          },
+          "lowest_loss": 27.512023918919375,
+          "did_early_stop": true
+        },
+        "1": {
+          "weights_file": "qwen-2.5-14b-instruct_20260515_015114_weights.pt",
+          "basis_key": "best_vectors"
+        }
+      },
+      "optimal_dim": 2
+    },
+    "gemma-2-2b-it": {
+      "add_layer": 15,
+      "alpha": 84.5228271484375,
+      "cone_dims_evaluated": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "cones": {
+        "2": {
+          "weights_file": "gemma-2-2b-it_d2_20260520_205202_weights.pt",
+          "basis_key": "best_vectors",
+          "mc_asr_ablation": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "mc_asr_ablation_ood": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "lowest_loss": 0.027984604153594526,
+          "did_early_stop": false
+        },
+        "3": {
+          "weights_file": "gemma-2-2b-it_d3_20260520_224004_weights.pt",
+          "basis_key": "best_vectors",
+          "mc_asr_ablation": {
+            "n_mc": 64,
+            "mean": 0.9996859296482412,
+            "std": 0.0012163892418993196,
+            "median": 1.0,
+            "min": 0.9949748743718593,
+            "max": 1.0
+          },
+          "mc_asr_ablation_ood": {
+            "n_mc": 64,
+            "mean": 0.9971774193548387,
+            "std": 0.006894257313565679,
+            "median": 1.0,
+            "min": 0.9526881720430107,
+            "max": 1.0
+          },
+          "lowest_loss": 0.03764767741803217,
+          "did_early_stop": false
+        },
+        "4": {
+          "weights_file": "gemma-2-2b-it_d4_20260521_020018_weights.pt",
+          "basis_key": "best_vectors",
+          "mc_asr_ablation": {
+            "n_mc": 64,
+            "mean": 0.9996074120603016,
+            "std": 0.0013485838597140187,
+            "median": 1.0,
+            "min": 0.9949748743718593,
+            "max": 1.0
+          },
+          "mc_asr_ablation_ood": {
+            "mean": 0.9385416666666666,
+            "std": 0.1955244867902797,
+            "median": 0.9978494623655914,
+            "min": 0.07311827956989247,
+            "max": 1.0
+          },
+          "lowest_loss": 23.357281601861214,
+          "did_early_stop": true
+        },
+        "1": {
+          "weights_file": "gemma-2-2b-it_20260515_002836_weights.pt",
+          "basis_key": "best_vectors"
+        }
+      },
+      "optimal_dim": 2
+    },
+    "gemma-2-9b-it": {
+      "add_layer": 24,
+      "alpha": 106.5625,
+      "cone_dims_evaluated": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "cones": {
+        "2": {
+          "weights_file": "gemma-2-9b-it_d2_20260527_154550_weights.pt",
+          "basis_key": "best_vectors",
+          "mc_asr_ablation": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "mc_asr_ablation_ood": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "lowest_loss": 26.5076943730656,
+          "did_early_stop": true
+        },
+        "3": {
+          "weights_file": "gemma-2-9b-it_d3_20260527_161123_weights.pt",
+          "basis_key": "best_vectors",
+          "mc_asr_ablation": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "mc_asr_ablation_ood": {
+            "mean": 0.9795698924731183,
+            "std": 0.06055968963582246,
+            "median": 1.0,
+            "min": 0.6709677419354839,
+            "max": 1.0
+          },
+          "lowest_loss": 23.992362721002042,
+          "did_early_stop": true
+        },
+        "4": {
+          "weights_file": "gemma-2-9b-it_d4_20260527_163509_weights.pt",
+          "basis_key": "best_vectors",
+          "mc_asr_ablation": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "mc_asr_ablation_ood": {
+            "mean": 0.9455645161290323,
+            "std": 0.12704954899697715,
+            "median": 1.0,
+            "min": 0.3204301075268817,
+            "max": 1.0
+          },
+          "lowest_loss": 23.357281601861214,
+          "did_early_stop": true
+        },
+        "1": {
+          "weights_file": "gemma-2-9b-it_20260515_010546_weights.pt",
+          "basis_key": "best_vectors"
+        }
+      },
+      "optimal_dim": 2
+    },
+    "llama-3.1-8b-instruct": {
+      "add_layer": 14,
+      "alpha": 4.06640625,
+      "cone_dims_evaluated": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "cones": {
+        "2": {
+          "weights_file": "llama-3.1-8b-instruct_d2_20260527_145133_weights.pt",
+          "basis_key": "best_vectors",
+          "mc_asr_ablation": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "mc_asr_ablation_ood": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "lowest_loss": 24.1769754230206,
+          "did_early_stop": false
+        },
+        "3": {
+          "weights_file": "llama-3.1-8b-instruct_d3_20260527_150223_weights.pt",
+          "basis_key": "best_vectors",
+          "mc_asr_ablation": {
+            "mean": 0.8068467336683417,
+            "std": 0.34049151783722603,
+            "median": 1.0,
+            "min": 0.04522613065326633,
+            "max": 1.0
+          },
+          "mc_asr_ablation_ood": {
+            "mean": 0.9161290322580645,
+            "std": 0.17551437379848403,
+            "median": 0.9978494623655914,
+            "min": 0.15483870967741936,
+            "max": 1.0
+          },
+          "lowest_loss": 31.813108887492753,
+          "did_early_stop": true
+        },
+        "4": {
+          "weights_file": "llama-3.1-8b-instruct_d4_20260527_152200_weights.pt",
+          "basis_key": "best_vectors",
+          "mc_asr_ablation": {
+            "mean": 0.983354271356784,
+            "std": 0.09178111587759527,
+            "median": 1.0,
+            "min": 0.4723618090452261,
+            "max": 1.0
+          },
+          "mc_asr_ablation_ood": {
+            "mean": 0.9997983870967742,
+            "std": 0.0006268399901269489,
+            "median": 1.0,
+            "min": 0.9978494623655914,
+            "max": 1.0
+          },
+          "lowest_loss": 20.104296693826175,
+          "did_early_stop": true
+        },
+        "1": {
+          "weights_file": "llama-3.1-8b-instruct_20260515_012214_weights.pt",
+          "basis_key": "best_vectors"
+        }
+      },
+      "optimal_dim": 2
+    }
+  }
+}

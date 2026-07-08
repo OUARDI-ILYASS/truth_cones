@@ -1,0 +1,32 @@
+{
+  "model": "llama-3.1-8b-instruct",
+  "n_layers": 32,
+  "datasets": [
+    "cities",
+    "animals",
+    "elements"
+  ],
+  "selected_layer": 1,
+  "selection_method": "global_max_mean_npe",
+  "evidence": {
+    "n_layers": 32,
+    "group_b_range": [
+      16,
+      28
+    ],
+    "npe_threshold": 0.1,
+    "n_candidate_layers": 0,
+    "selected_layer_npe": 0.016156936064362526,
+    "selected_layer_mean_npe": 0.09359860420227051,
+    "datasets_aggregated": [
+      "cities",
+      "animals",
+      "elements"
+    ],
+    "per_dataset_peak_layer": {
+      "cities": 12,
+      "animals": 12,
+      "elements": 12
+    }
+  }
+}

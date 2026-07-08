@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0",
+  "produced_by": "experiment_3",
+  "timestamp": "2026-05-27T15:22:00.372728",
+  "cone_dims": [
+    2,
+    3,
+    4
+  ],
+  "models": {
+    "llama-3.1-8b-instruct": {
+      "add_layer": 14,
+      "alpha": 4.06640625,
+      "cone_dims_evaluated": [
+        2,
+        3,
+        4
+      ],
+      "cones": {
+        "2": {
+          "weights_file": "llama-3.1-8b-instruct_d2_20260527_145133_weights.pt",
+          "basis_key": "best_vectors",
+          "mc_asr_ablation": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "mc_asr_ablation_ood": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "lowest_loss": 24.1769754230206,
+          "did_early_stop": false
+        },
+        "3": {
+          "weights_file": "llama-3.1-8b-instruct_d3_20260527_150223_weights.pt",
+          "basis_key": "best_vectors",
+          "mc_asr_ablation": {
+            "mean": 0.8068467336683417,
+            "std": 0.34049151783722603,
+            "median": 1.0,
+            "min": 0.04522613065326633,
+            "max": 1.0
+          },
+          "mc_asr_ablation_ood": {
+            "mean": 0.9161290322580645,
+            "std": 0.17551437379848403,
+            "median": 0.9978494623655914,
+            "min": 0.15483870967741936,
+            "max": 1.0
+          },
+          "lowest_loss": 31.813108887492753,
+          "did_early_stop": true
+        },
+        "4": {
+          "weights_file": "llama-3.1-8b-instruct_d4_20260527_152200_weights.pt",
+          "basis_key": "best_vectors",
+          "mc_asr_ablation": {
+            "mean": 0.983354271356784,
+            "std": 0.09178111587759527,
+            "median": 1.0,
+            "min": 0.4723618090452261,
+            "max": 1.0
+          },
+          "mc_asr_ablation_ood": {
+            "mean": 0.9997983870967742,
+            "std": 0.0006268399901269489,
+            "median": 1.0,
+            "min": 0.9978494623655914,
+            "max": 1.0
+          },
+          "lowest_loss": 20.104296693826175,
+          "did_early_stop": true
+        }
+      },
+      "optimal_dim": 2
+    }
+  }
+}

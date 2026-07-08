@@ -1,0 +1,55 @@
+{
+  "model_name": "qwen-2.5-14b-instruct",
+  "add_layer": 30,
+  "alpha": 62.25,
+  "weights_file": "qwen-2.5-14b-instruct_20260514_155729_weights.pt",
+  "metadata": {
+    "add_layer": 30,
+    "alpha": 62.25,
+    "cone_dim": 1,
+    "training": {
+      "lr": 0.01,
+      "batch_size": 1,
+      "effective_batch_size": 16,
+      "epochs": 1,
+      "patience": 5,
+      "n_lr_reduce": 2,
+      "n_sample": 16,
+      "weight_decay": 0.0
+    },
+    "loss_weights": {
+      "ablation": 1.0,
+      "addition": 0.2,
+      "retention": 1.0
+    },
+    "retain_window": 30
+  },
+  "results": {
+    "lowest_loss": Infinity,
+    "did_early_stop": false
+  },
+  "history_metrics": {
+    "abl_loss": [],
+    "add_loss": [],
+    "ret_loss": [],
+    "lr_changes": []
+  },
+  "eval": {
+    "dim": {
+      "asr_ablation": 1.0,
+      "asr_addition": 1.0
+    },
+    "dim_ood": {
+      "asr_ablation": 1.0,
+      "asr_addition": 1.0
+    },
+    "cone_1d": {
+      "asr_ablation": 1.0,
+      "asr_addition": 1.0
+    },
+    "cone_1d_ood": {
+      "asr_ablation": 1.0,
+      "asr_addition": 1.0
+    }
+  }
+}

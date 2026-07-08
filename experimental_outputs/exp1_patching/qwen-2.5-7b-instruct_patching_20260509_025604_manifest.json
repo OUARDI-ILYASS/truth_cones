@@ -1,0 +1,32 @@
+{
+  "model": "qwen-2.5-7b-instruct",
+  "n_layers": 28,
+  "datasets": [
+    "cities",
+    "animals",
+    "elements"
+  ],
+  "selected_layer": 27,
+  "selection_method": "global_max_mean_npe",
+  "evidence": {
+    "n_layers": 28,
+    "group_b_range": [
+      14,
+      25
+    ],
+    "npe_threshold": 0.3,
+    "n_candidate_layers": 0,
+    "selected_layer_npe": 0.0,
+    "selected_layer_mean_npe": 0.09090909361839294,
+    "datasets_aggregated": [
+      "cities",
+      "animals",
+      "elements"
+    ],
+    "per_dataset_peak_layer": {
+      "cities": 27,
+      "animals": 27,
+      "elements": 26
+    }
+  }
+}

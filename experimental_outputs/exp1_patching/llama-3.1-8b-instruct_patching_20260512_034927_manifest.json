@@ -1,0 +1,37 @@
+{
+  "model": "llama-3.1-8b-instruct",
+  "n_layers": 32,
+  "datasets": [
+    "llama-3.1-8b-instruct_animals_20260512_033753_weights",
+    "llama-3.1-8b-instruct_cities_20260512_033610_weights",
+    "llama-3.1-8b-instruct_elements_20260512_034019_weights"
+  ],
+  "selected_layer": 14,
+  "selection_method": "most_downstream_group_b",
+  "evidence": {
+    "n_layers": 32,
+    "group_b_range": [
+      12,
+      28
+    ],
+    "npe_threshold": 0.1,
+    "n_candidate_layers": 3,
+    "selected_layer_npe": 0.23866498470306396,
+    "selected_layer_mean_npe": 0.07296127825975418,
+    "datasets_aggregated": [
+      "llama-3.1-8b-instruct_animals_20260512_033753_weights",
+      "llama-3.1-8b-instruct_cities_20260512_033610_weights",
+      "llama-3.1-8b-instruct_elements_20260512_034019_weights"
+    ],
+    "per_dataset_peak_layer": {
+      "llama-3.1-8b-instruct_animals_20260512_033753_weights": 12,
+      "llama-3.1-8b-instruct_cities_20260512_033610_weights": 12,
+      "llama-3.1-8b-instruct_elements_20260512_034019_weights": 12
+    },
+    "source_npz_files": [
+      "experimental_outputs/exp1_patching/llama-3.1-8b-instruct_animals_heatmap_20260512_033753_weights.npz",
+      "experimental_outputs/exp1_patching/llama-3.1-8b-instruct_cities_heatmap_20260512_033610_weights.npz",
+      "experimental_outputs/exp1_patching/llama-3.1-8b-instruct_elements_heatmap_20260512_034019_weights.npz"
+    ]
+  }
+}

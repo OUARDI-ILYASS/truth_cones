@@ -1,0 +1,824 @@
+% ============================================================================
+%  The Multidimensional Geometry of Truth in LLMs 
+%  Author: Ilyass Ouardi  -
+%  Universita degli Studi di Milano
+%
+%  AUTHOR VOICE CONVENTION:
+%    * "I"  — methodological choices, engineering decisions
+%    * "We" — inclusive mathematical exposition only
+% ============================================================================
+
+\documentclass[sn-basic]{sn-jnl}
+
+% Packages -------------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{textcomp}
+
+\usepackage[title]{appendix}
+\usepackage{manyfoot}
+
+\usepackage{amsmath, amssymb, amsthm, amsfonts}
+\usepackage{mathrsfs}
+
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{colortbl}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, fit, shapes.geometric, calc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{enumitem}
+
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{listings}
+
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{ colorlinks=true, linkcolor=blue!50!black, citecolor=blue!50!black,
+    urlcolor=blue!50!black }
+
+\usepackage{cleveref}
+
+% Color macros for tables
+\definecolor{bestcolor}{HTML}{C62828}
+\definecolor{secondcolor}{HTML}{1565C0}
+\definecolor{failcolor}{HTML}{FFCDD2}
+\definecolor{passcolor}{HTML}{C8E6C9}
+\newcommand{\best}[1]{\textcolor{bestcolor}{\textbf{#1}}}
+\newcommand{\second}[1]{\textcolor{secondcolor}{\underline{#1}}}
+
+% Definition environment
+\newtheorem{definition}{Definition}[section]
+
+% Working notations ----------------------------------------------------------
+\newcommand{\bmu}{\boldsymbol{\mu}} \newcommand{\bnu}{\boldsymbol{\nu}}
+\newcommand{\dimv}{\theta_{\text{DIM}}}
+\newcommand{\fablate}[1][\cdot]{f_{\text{ablate}(#1)}}
+\newcommand{\fadd}[1][\cdot]{f_{\text{add}(#1,\alpha)}}
+\newcommand{\Labl}{\mathcal{L}_{\text{abl}}}
+\newcommand{\Ladd}{\mathcal{L}_{\text{add}}}
+\newcommand{\Lret}{\mathcal{L}_{\text{ret}}}
+
+\begin{document}
+
+\title[Truth as a Concept Cone]{The Multidimensional Geometry of Truth in Large Language Models: A Concept-Cone Extension of the Linear Representation Hypothesis}
+
+\author[1]{\fnm{Ilyass} \sur{Ouardi}}\email{ilyass.ouardi@studenti.unimi.it}
+
+\affil[1]{\orgdiv{Department of Computer Science}, \orgname{Universit\`a degli
+Studi di Milano}, \city{Milan}, \country{Italy}}
+
+\date{\today}
+
+
+% ============================================================================
+%  ABSTRACT
+% ============================================================================
+
+
+
+\abstract{ The Linear Representation Hypothesis holds that high-level concepts
+are encoded as linear directions in a language model's residual stream. Under
+this hypothesis, propositional truth is modeled as one such direction: a
+Difference-in-Means (DIM) probe recovers it, and adding or ablating that
+direction can flip the model's True/False verdict. Recent work on refusal
+suggests this single direction may be the one-dimensional case of a
+multi-dimensional \emph{concept cone}, a linear subspace whose interior mediates
+the behaviour. This project asks whether truth has the same structure. I test
+two methods: \emph{Truth Direction Optimization} (TDO), a gradient-based
+refinement of the DIM direction under a loss that encodes two causal axioms and
+a KL-retention term; and \emph{Truth Cone Optimization} (TCO), which extends
+this to a $k$-dimensional orthonormal cone and, at every step, samples
+directions from \emph{inside} the cone so the optimizer targets the interior
+rather than only the basis. On six instruction-tuned models from three families
+(Qwen-2.5 1.5/7/14B, Gemma-2 2/9B, Llama-3.1-8B), a single direction is causally
+sufficient for the smaller models but fails for the larger ones on two axes at
+once: low ablation Answer Switching Rate and raised KL divergence on unrelated
+prompts. A $2$-D cone closes both gaps for every model. The basis vectors are
+near-orthogonal to the DIM probe ($|\cos| < 0.1$) yet each is individually
+causally effective. For the models I tested, this is consistent with truth
+occupying a small multi-dimensional linear subspace rather than a single line. }
+
+
+\maketitle
+
+\input{figures/fig_teaser}
+
+
+\section{Introduction}
+\label{sec:intro}
+
+As large language models (LLMs) have scaled in size and capabilities, a
+sustained effort has emerged to render their internal computations
+interpretable. A central hypothesis in this effort, the \emph{Linear
+Representation Hypothesis}, holds that high-level concepts such as sentiment,
+refusal, or factuality align with linear directions in a model's residual
+stream, and that intervening along such a direction changes the corresponding
+behaviour~\citep{parkLinearRepresentationHypothesis2024}.
+
+This work focuses on the concept of \emph{propositional truth}. Given a
+binary factual statement (``The city of Tokyo is in Japan''), can the
+computation that decides between ``True'' and ``False'' be isolated and causally
+manipulated? This matters because reliable factual behaviour is needed before
+LLMs are used in high-stakes settings, and because understanding how truth is
+represented is a step toward predicting when it fails.
+
+Earlier causal work treats truth as a single direction.
+\citet{azariaInternalStateLLM2023} showed that hidden-layer activations carry a
+truthfulness signal a shallow classifier can read, reporting $71$--$83$\%
+accuracy on binary factual statements (OPT-6.7B, LLaMA-2-7B).
+\citet{marksGeometryTruthEmergent2024} made this geometric and causal: using
+PCA, cross-dataset probe generalization, and activation patching on LLaMA-2 (7B,
+13B, 70B), they showed that truth representations emerge with scale, sit in a
+small group of hidden states above a ``summarization'' token, and that a
+Difference-in-Means (DIM) probe finds a direction more causally implicated in
+outputs than logistic-regression or contrastive alternatives. I take their
+layer-localization protocol and the DIM probe as my baseline, and extend it in
+two ways: from classification accuracy to causal mediation through a composite
+loss, and from one direction to a $k$-dimensional cone.
+
+The concept cone, introduced by \citet{wollschlagerGeometryRefusalLarge2025} for
+refusal, formalizes the multi-dimensional case. A concept $W$ is represented by
+a concept cone of dimension $k$ if there is an orthonormal basis $V = [v_1,
+\ldots, v_k]$ such that every direction in the polyhedral cone $\mathrm{Cone}(V)
+= \{\sum_{i=1}^{k} \lambda_i v_i : \lambda_i \ge 0\} \setminus \{0\}$ mediates
+$W$ in the sense of \Cref{def:axioms}. Each $v_i$ is a linear direction, so the
+cone is a higher-dimensional \emph{linear} object and the single-direction
+picture is its $k=1$ case; the cone therefore extends the linear representation
+hypothesis to a multi-dimensional regime rather than replacing it.
+
+This work asks two questions: does the concept-cone framework transfer from
+refusal to propositional truth, and if so, at what effective dimensionality $k$
+and at what cost to unrelated capabilities?
+
+To answer them I make two methodological contributions and one empirical one.
+\textbf{(C-a)}~TDO, a gradient-based $1$-D refinement of DIM under a composite
+loss encoding two causal axioms (\Cref{def:axioms}) and a KL-retention term.
+\textbf{(C-b)}~TCO, which extends TDO to $k$-dimensional orthonormal cones via
+modified Gram--Schmidt and Monte-Carlo sampling of interior directions during
+training, so the optimizer constrains the cone interior, not only its basis.
+\textbf{(C-c)}~an evaluation across three families and scales (Qwen-2.5
+1.5/7/14B, Gemma-2 2/9B, Llama-3.1-8B). A $1$-D direction is causally sufficient
+for the smaller models ($\le 2$B) but fails for the three larger ones on two
+axes at once: low ablation Answer Switching Rate and raised KL divergence on
+unrelated prompts. A $2$-D cone closes both gaps (\Cref{fig:teaser}); and in the
+reference $4$-D cone every basis vector, including the warm-started $v_1$,
+is near-orthogonal to DIM ($|\cos| < 0.1$) yet the cone remains causally
+effective (\Cref{tab:orthogonality}), so its mediating directions are ones the
+linear probe does not recover.
+
+I keep the scope narrow. The study covers instruction-tuned models only;
+forced-choice True/False prompts over three domains (geography, biology,
+chemistry); an $80$/$20$ in-distribution split; and a leave-one-domain-out
+out-of-distribution test. Open-ended generation, multi-hop reasoning, base
+models, and adversarial robustness of the cone are left to future work
+(\Cref{sec:conclusion}).
+
+
+\section{Method}
+\label{sec:method}
+
+% \input{figures/fig_pipeline}
+I study factual knowledge as a forced binary choice: the model is shown a
+factual statement and must decide whether it is ``True'' or ``False''. Given a
+frozen instruction-tuned model $f$, my goal is to find a subspace of $f$'s
+residual stream that causally controls this decision, a set of directions
+whose manipulation flips the model's verdict.
+
+\Cref{sec:axioms} states the two causal properties a candidate truth direction
+must satisfy; \Cref{sec:loc} describes the activation-patching step that selects
+a target layer $l^{*}$ per model; \Cref{sec:dim} gives the DIM baseline and the
+magnitude calibration $\alpha = \|\dimv\|_2$; \Cref{sec:tdo} introduces TDO;
+\Cref{sec:tco} extends it to the $k$-dimensional cone; and \Cref{sec:eval}
+defines the evaluation protocols.
+
+\subsubsection*{Factual evaluation.}
+Concretely, following \citet{marksGeometryTruthEmergent2024}, each prompt uses a
+few-shot, in-context format rather than a conversational one:
+
+\begin{quote}\ttfamily\small The city of Tokyo is in Japan. This statement is:
+True\\
+The city of Hanoi is in Poland. This statement is: False\\
+The city of Chicago is in Canada. This statement is:
+\end{quote}
+%
+\noindent The model's next-token distribution is restricted to the two token IDs
+$t_{\text{true}}=$\,``True'' and $t_{\text{false}}=$\,``False''. The fixed
+suffix ``\,This statement is:\,'' separates the adverbial phrase and the closing
+punctuation, which together carry the truth-relevant edit, from the position at
+which the final layer reads out the prediction; this separation lets the
+activation-patching step (\Cref{sec:loc}) isolate the truth signal before
+readout. The few-shot format also reduces interference from
+instruction-following circuits introduced during RLHF.
+
+The training data are triples $(p_{\text{true}}, p_{\text{false}},
+p_{\text{retain}})$: two factual statements with opposite truth value and one
+filtered Alpaca instruction with no factual-recall keywords.
+
+
+\subsection{Truth mediation properties}
+\label{sec:axioms}
+
+Let $f$ be a frozen autoregressive transformer with $L \in \mathbb{N}$ layers
+and hidden size $d \in \mathbb{N}$, and let $x^{(l)}_{i}(p) \in \mathbb{R}^{d}$
+denote its residual-stream activation at layer $l$ and token position $i$ on
+prompt $p$. A candidate truth direction is a unit vector $r \in \mathbb{S}^{d-1}
+= \{v \in \mathbb{R}^{d} : \|v\|_2 = 1\}$; its multi-dimensional generalization
+is a vector $r \in \mathrm{Cone}(V)$ drawn from the concept cone
+$\mathrm{Cone}(V) = \{\sum_{i=1}^{k} \lambda_i v_i : \lambda_i \ge 0\} \setminus
+\{0\}$ spanned by an orthonormal basis $V = [v_1, \ldots, v_k] \in \mathbb{R}^{d
+\times k}$, of which the single-direction case is $k=1$. Its causal role is
+probed by intervening on the activations $\{x^{(l)}_{i}(p)\}_{l,i}$ through the
+two operations below, and $r$, or, more generally, a concept cone
+$\mathrm{Cone}(V) \subseteq \mathbb{R}^{d}$ of such directions, is admissible
+only if these interventions certify the two causal axioms of \Cref{def:axioms}.
+
+
+\subsubsection*{Intervention operations.}
+\emph{Directional ablation} $\fablate[r]$ projects the stream onto the subspace
+orthogonal to $r$ at every layer and position:
+%
+\begin{equation}
+\forall\, i\;\forall\, l\quad
+\tilde{x}^{(l)}_i = x^{(l)}_i
+  - \hat{r}\,\hat{r}^{\!\top} x^{(l)}_i,
+\end{equation}
+%
+where $\hat{r}$ is the unit vector along $r$. If the verdict flips from ``True''
+to ``False'' after ablation, $r$ was causally necessary.\\
+\emph{Activation addition} $\fadd[r,l^{*}](p_{\text{false}})$ injects a scaled
+truth signal at a single layer $l^{*}$:
+%
+\begin{equation}
+\forall\, i\quad
+\tilde{x}^{(l^{*})}_i = x^{(l^{*})}_i + \alpha \cdot r.
+\end{equation}
+%
+If a false statement flips to ``True'' under addition, $r$ was causally
+sufficient to override the original judgment. Following
+\citet{arditiRefusalLanguageModels2024}, ablation is applied across all layers
+and token positions, and addition at the single selected layer $l^*$
+(\Cref{sec:loc}).
+
+\begin{definition}[Truth mediation]
+\label{def:axioms}
+A direction $r \in \mathbb{R}^{d}$ at layer $l^{*}$ \emph{mediates truth} if:
+\begin{enumerate}
+\item \textbf{Monotonic scaling.} For every false statement $p_{\text{false}}$,
+the probability of ``True'' under $\fadd[r,l^{*}](p_{\text{false}})$ increases
+monotonically with the coefficient $\alpha \in [0, \alpha_{\max}]$.
+\item \textbf{Surgical factuality ablation.} The directional ablation
+$\fablate[r](p_{\text{true}})$ satisfies (i) \emph{causal necessity}: on true statements
+$p_{\text{true}}$, the model flips its judgment from ``True'' to ``False'' with
+high probability; and (ii) \emph{functional specificity}: on retain prompts
+$p_{\text{retain}}$, the output distribution is preserved ($\mathrm{KL} < 0.1$
+per \cite{arditiRefusalLanguageModels2024}).
+\end{enumerate}
+A $k$-dim cone basis $V$ mediates truth if every direction sampled from the
+relative cone $\mathrm{Cone}(V)$ satisfies both axioms.
+\end{definition}
+
+The cone version of \Cref{def:axioms} motivates the Monte-Carlo sampling in
+\Cref{sec:tco}: optimizing only on the basis vectors leaves the interior of
+$\mathrm{Cone}(V)$ unconstrained, so it need not satisfy the $k$-dim version of
+the axioms.
+
+Two metrics quantify these axioms and are reported throughout. The
+\textbf{Answer Switching Rate} (ASR) is the fraction of factual prompts whose
+argmax token flips under intervention: $\mathrm{ASR}_{\text{abl}}$ ablates
+$p_{\text{true}}$ and counts flips to ``False'' (necessity);
+$\mathrm{ASR}_{\text{add}}$ adds to $p_{\text{false}}$ and counts flips to
+``True'' (sufficiency). \textbf{KL retention} $\mathrm{KL}(p_{r} \| p_{0})$ is
+the divergence between the last-$30$-token distributions on $p_{\text{retain}}$
+with and without ablation of $r$ (functional specificity).
+
+\subsection{Localizing the truth-mediating layer}
+\label{sec:loc}
+
+Both TDO and TCO optimize at a single layer $l^{*}$, and running the full
+optimization at every layer is too expensive, so I first localize, per model,
+the layer whose residual-stream states most strongly mediate the truth judgment.
+
+To do this I use denoising activation
+patching~\citep{heimersheimHowUseInterpret2024}, following
+\citet{marksGeometryTruthEmergent2024}. For each model I sample $50$ contrastive
+pairs per dataset (cities, animals, elements). Each clean prompt
+$p_{\text{clean}}$ is corrupted to $p_{\text{corrupt}}$ by Symmetric Token
+Replacement (STR): the object token is swapped for a semantically related
+alternative that flips the ground-truth label while preserving syntactic
+structure and token count. I then cache the clean-run activations, re-run the
+model on $p_{\text{corrupt}}$, and restore a single activation at position $i$,
+layer $l$ from the clean cache. To measure how much a layer contributes, I use
+the \textbf{logit difference} $M(p) = \mathrm{logit}(p)_{t_{\text{true}}} -
+\mathrm{logit}(p)_{t_{\text{false}}}$; following
+\citet{zhangBESTPRACTICESACTIVATION2024} I prefer it to a probability-based
+metric, since probability can miss components that contribute negatively to the
+correct answer, while the logit difference is linear in the final residual
+stream and so decomposes cleanly under patching.
+Writing $M_{\text{clean}}$, $M_{\text{corrupt}}$, and $M_{\text{patched}}$ for
+the logit difference on the clean run, the corrupted run, and the restored run,
+the effect of that restoration is the normalized patching effect
+%
+\begin{equation}
+\mathrm{NPE}(l, i) =
+\frac{M_{\text{patched}} - M_{\text{corrupt}}}
+     {M_{\text{clean}} - M_{\text{corrupt}}},
+\end{equation}
+%
+which lies in $[0, 1]$: it is $1$ when restoring $(l, i)$ fully recovers clean
+performance and $0$ at the corrupted baseline.
+
+Sweeping $\mathrm{NPE}$ over every layer and position, then aggregating across
+models and datasets, reveals three groups of causally implicated hidden states,
+matching \citet{marksGeometryTruthEmergent2024}: group~(a), the entity token
+that STR perturbs, encoding the factual association; group~(b), the
+end-of-statement punctuation in mid layers, where clause-level information is
+aggregated into a propositional judgment; and group~(c), the colon token ``\,:''
+in mid-to-late layers, which encodes the model's prediction (applying the
+decoder head to these states gives top logits for ``True''/``False''). I take
+$l^{*}$ from group~(b), the propositional judgment itself rather than its
+readout in (c), as the most-downstream layer there with mean $\mathrm{NPE} >
+0.1$. Across all six models the selected layer falls at normalized depth
+$0.44$--$0.69$ (\Cref{tab:master}).
+
+\input{figures/fig_npe_heatmap.tex}
+
+This reduces the search space for all later optimization to a single $(l^{*},
+-5)$ pair per model.\footnote{The position $i = -5$ follows from the prompt
+structure: for all six tokenizers the four trailing tokens after the final word
+of the factual statement are the fixed suffix ``\,This statement is:\,'', so
+position $-5$ lands on the end-of-statement punctuation.} DIM, TDO, and TCO then
+all operate at the layer most causally implicated for that model, so the
+cross-family comparison does not rely on a fixed depth.
+
+\subsection{DIM baseline and magnitude calibration}
+\label{sec:dim}
+A linear baseline both anchors the comparison and gives a starting point for
+optimization. Following \cite{marksGeometryTruthEmergent2024,
+arditiRefusalLanguageModels2024} I compute $\dimv = \bmu_{+} - \bmu_{-}$, where
+$\bmu_{+}$ and $\bmu_{-}$ are the mean activations at $(l^{*}, -5)$ over the
+true and false training subsets. $\dimv$ is normalized to a unit vector for
+ablation and used at its natural norm $\alpha := \|\dimv\|_{2}$ for addition.
+Calibrating $\alpha$ to the model's own representational scale at $l^{*}$,
+rather than tuning it by hand, removes one degree of freedom; per-model $\alpha$
+ranges from $4.07$ (Llama-3.1-8B) to $106.56$ (Gemma-2-9B), reflecting large
+differences in residual-stream norm across families (\Cref{tab:master}).
+
+\subsection{Truth Direction Optimization (TDO)}
+\label{sec:tdo}
+
+DIM finds a direction that maximally separates the means of true and false
+activations, but mean separation does not guarantee causal mediation: a
+separating vector may fail to flip the model under ablation and may not
+preserve general capabilities. I therefore encode the causal axioms
+(\Cref{def:axioms}) directly into loss functions and recover a corresponding
+truth direction $r \in \mathbb{R}^{d}$ by gradient descent.
+
+For the sufficiency property, I train the model to predict ``True'' on false
+statements $p_{\text{false}}$ by running $f$ with a modified forward pass
+$\fadd[r,l^{*}](p_{\text{false}})$ that adds $r$ to the activations at layer
+$l^{*}$ with scaling coefficient $\alpha$, minimizing the cross-entropy between
+the model output and the target token $t_{\text{true}}$. For the necessity
+property, I symmetrically compute the cross-entropy between the target token
+$t_{\text{false}}$ and the output of a modified forward pass
+$\fablate[r]$ that projects $r$ out of every residual stream position,
+driving the model to predict ``False'' on true statements $p_{\text{true}}$.
+A key strength of the gradient-based approach is the ability to control any
+predefined objective, which lets me bound the extent to which unrelated
+computations are perturbed. For this, I use a retain loss based on the
+Kullback--Leibler (KL) divergence to ensure that directional ablation of $r$
+on retain prompts $p_{\text{retain}}$ does not shift the model's output
+distribution. The three terms combine into a composite loss
+\[
+\mathcal{L}(r) =
+   \lambda_{\text{abl}} \Labl(r)
+ + \lambda_{\text{add}} \Ladd(r)
+ + \lambda_{\text{ret}} \Lret(r),
+\]
+where
+\begin{align*}
+\Labl(r) &= \mathrm{CE}\!\left(f_{\text{ablate}(r)}(p_{\text{true}}),\;
+                                t_{\text{false}}\right)
+  &\text{(necessity)},\\
+\Ladd(r) &= \mathrm{CE}\!\left(f_{\text{add}(r,l^{*},\alpha)}(p_{\text{false}}),\;
+                                t_{\text{true}}\right)
+  &\text{(sufficiency)},\\
+\Lret(r) &= \mathrm{KL}\!\left(f_{\text{ablate}(r)}(p_{\text{retain}})\;\|\;
+                                f(p_{\text{retain}})\right)
+  &\text{(surgicality)}.
+\end{align*}
+I initialize $r$ from $\dimv / \|\dimv\|$ (warm start), placing the optimizer
+in the discriminative region rather than at a random point on the unit sphere.
+The loss weights $(\lambda_{\text{abl}}, \lambda_{\text{add}},
+\lambda_{\text{ret}}) = (1.0, 0.2, 1.0)$ are taken from
+\citet[Tab.~3]{wollschlagerGeometryRefusalLarge2025} and held fixed across all
+six models (\Cref{tab:hyperparams}). \Cref{alg:tdo} gives the full procedure.
+
+\begin{algorithm}[t]
+\caption{Truth Direction Optimization (TDO)}
+\label{alg:tdo}
+\begin{algorithmic}[1]
+\Require Frozen model $f$, scaling coefficient $\alpha$, addition layer $l^{*}$,
+  learning rate $\eta$, loss weights $\lambda_{\text{abl}},
+  \lambda_{\text{add}}, \lambda_{\text{ret}}$, and data $\mathcal{D} =
+  \{(p_{\text{true},i},\; p_{\text{false},i},\;
+  p_{\text{retain},i})\}_{i=1}^{N}$.
+\Ensure Truth direction $r$
+\State $r \leftarrow \theta_{\text{DIM}} / \|\theta_{\text{DIM}}\|_2$
+  \Comment{warm-start from DIM}
+\While{not converged}
+  \State Sample batch $\mathbf{B} \sim \mathcal{D}$
+  \State $\mathcal{L} \leftarrow \textsc{ComputeLoss}(r, f, \mathbf{B})$
+  \State $r \leftarrow r - \eta\, \nabla_{r} \mathcal{L}$
+  \State $r \leftarrow r / \|r\|_2$
+    \Comment{renormalize to unit sphere}
+\EndWhile \\
+\Function{ComputeLoss}{$r, f, \mathbf{B}$}
+  \State $p_{\text{true}},\, p_{\text{false}},\, p_{\text{retain}} \leftarrow
+    \mathbf{B}$
+  \State $\mathcal{L}_{\text{abl}} \leftarrow
+    \mathrm{CE}\,\bigl(f_{\text{ablate}(r)}(p_{\text{true}}),\;
+    t_{\text{false}}\bigr)$
+  \State $\mathcal{L}_{\text{add}} \leftarrow
+    \mathrm{CE}\,\bigl(f_{\text{add}(r,\,l^{*},\,\alpha)}(p_{\text{false}}),\;
+    t_{\text{true}}\bigr)$
+  \State $\mathcal{L}_{\text{ret}} \leftarrow
+    \mathrm{KL}\,\bigl(f_{\text{ablate}(r)}(p_{\text{retain}})\;\|\;
+    f(p_{\text{retain}})\bigr)$
+  \State \Return $\lambda_{\text{abl}}\,\mathcal{L}_{\text{abl}} +
+    \lambda_{\text{add}}\,\mathcal{L}_{\text{add}} +
+    \lambda_{\text{ret}}\,\mathcal{L}_{\text{ret}}$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+
+\subsection{Truth Cone Optimization (TCO)}
+\label{sec:tco}
+
+\Cref{tab:tdo_vs_dim} shows that even TDO at $k = 1$ fails for the three larger
+models on ablation (e.g.\ Qwen-2.5-7B: $\mathrm{ASR} = 0.020$). If truth
+occupies a multi-dimensional linear subspace, one direction can only capture a
+projection of it. I therefore extend TDO to higher dimensions by searching for
+regions in activation space where all vectors mediate the truth verdict. For
+this, I optimize an orthonormal basis $V = [v_1, \ldots, v_k] \in \mathbb{R}^{d
+\times k}$ spanning a $k$-dimensional polyhedral cone $\mathrm{Cone}(V) =
+\{\sum_{i=1}^{k} \lambda_i v_i \mid \lambda_i \ge 0\} \setminus \{0\}$, where
+every direction $r \in \mathrm{Cone}(V)$ satisfies the causal axioms
+(\Cref{def:axioms}). The constraint $\lambda_i \ge 0$ ensures that directions
+within the cone consistently strengthen the truth signal; allowing negative
+coefficients could introduce opposing effects and reduce overall effectiveness.
+Orthogonality of the basis vectors prevents the optimizer from collapsing onto
+co-linear directions. In practice, activation-space directions cannot be scaled
+arbitrarily without model degeneration, which effectively bounds $\lambda_i$.
+
+A naive extension of TDO would optimize only the basis vectors, but this causes
+\emph{basis collapse}: the loss is satisfied at each $v_i$ while interior
+directions of the cone remain unconstrained. I avoid this by evaluating the
+composite loss both on the basis vectors and on Monte-Carlo samples drawn from
+the cone interior at every step. Computing the loss on the basis vectors
+improves stability and tightens the lower bound of the ASR, since the basis
+vectors form the cone boundary and tend to degrade first. After each gradient
+step, I re-project the basis onto the cone via modified Gram--Schmidt
+orthonormalization, which restores orthonormality of $V$.
+
+Sampling the interior requires care. Directional ablation depends only on the
+normalized $\hat{r}$, so what matters is the \emph{direction} of the sample,
+not its magnitude. A natural choice would be to draw non-negative coefficients
+$\lambda_i$, form a convex combination $r = \sum_i \lambda_i v_i$, and
+normalize; but the map from coefficients to normalized directions is uneven,
+and most such samples cluster near the basis vectors after normalization,
+biasing the estimate toward the cone boundary. I instead sample directions
+uniformly from the non-negative orthant of the unit sphere in the cone's
+coordinate space, exploiting the rotational symmetry of the isotropic
+Gaussian: at each step, $16$ directions $\{u_j\}$ are drawn by sampling
+$c_j \sim \mathcal{N}(0, I_k)$, taking component-wise absolute values to fold
+the mass into the positive orthant, and setting
+$u_j = |c_j| / \| |c_j| \|_2$. Each $u_j \in \mathbb{R}^k$ is a unit vector of
+non-negative coefficients expressed in the basis of the cone; the map
+$r = V u_j$ realizes it as a direction in the model's residual stream
+$\mathbb{R}^d$, where the intervention is applied. This Gaussian-based scheme
+yields uniform coverage of the cone and avoids the boundary bias of
+convex-combination sampling~\citep{wollschlagerGeometryRefusalLarge2025}.
+
+Initialization is incremental: for $k = 1$, I set $V$ from $\dimv$ as in TDO;
+for $k > 1$, I augment the previous $(k{-}1)$-cone basis with one random unit
+vector and re-orthonormalize, adding a single degree of freedom per increment.
+All other hyperparameters are inherited from TDO (\Cref{tab:hyperparams}).
+\Cref{alg:tco} gives the full procedure.
+
+\begin{algorithm}[t]
+\caption{Truth Cone Optimization (TCO)}
+\label{alg:tco}
+\begin{algorithmic}[1]
+\Require Frozen model $f$, scaling coefficient $\alpha$, addition layer $l^{*}$,
+  learning rate $\eta$, loss weights $\lambda_{\text{abl}},
+  \lambda_{\text{add}}, \lambda_{\text{ret}}$, cone dimension $k$, and data
+  $\mathcal{D} = \{(p_{\text{true},i},\; p_{\text{false},i},\;
+  p_{\text{retain},i})\}_{i=1}^{N}$.
+\Ensure Orthonormal cone basis $V = [v_1, \ldots, v_k]$
+\If{$k = 1$}
+  \State $V \leftarrow \theta_{\text{DIM}} / \|\theta_{\text{DIM}}\|_2$
+\Else
+  \State $V \leftarrow [V^{(k-1)},\; v_{\text{rand}}]$
+    \Comment{augment previous basis}
+  \State $V \leftarrow \textsc{GramSchmidt}(V)$
+\EndIf
+\While{not converged}
+  \State Sample batch $\mathbf{B} \sim \mathcal{D}$
+  \State $\mathcal{L}_{\text{sample}} \leftarrow
+    \mathbb{E}_{u \sim \textsc{Sample}(V)}
+    \bigl[\textsc{ComputeLoss}\,(u,\, f,\, \mathbf{B})\bigr]$
+  \State $\mathcal{L}_{\text{basis}} \leftarrow \frac{1}{k} \sum_{i=1}^{k}
+    \textsc{ComputeLoss}\,(v_i,\, f,\, \mathbf{B})$
+  \State $\mathcal{L} \leftarrow \mathcal{L}_{\text{sample}} +
+    \mathcal{L}_{\text{basis}}$
+  \State $V \leftarrow V - \eta\, \nabla_{V} \mathcal{L}$
+  \State $V \leftarrow \textsc{GramSchmidt}(V)$
+    \Comment{re-orthonormalize}
+\EndWhile \\
+\Function{Sample}{$V$}
+  \State $s \sim \text{Unif}(x \in \mathbb{R}^k_+ : \|x\|_2 = 1)$
+  \State $r = V s$
+  \State \Return $r$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+
+\subsection{Evaluation protocol}
+\label{sec:eval}
+
+Two evaluations check whether a learned cone captures \emph{novel} structure and
+whether it does so without damaging general capabilities.
+
+\subsubsection*{Geometric alignment with DIM.}
+A high-ASR cone that merely replicates the DIM direction $k$ times would be
+trivial. For each cone of dimension $k \in \{1, 2, 3, 4\}$ I compute the cosine
+alignment $|\cos(\dimv, v_i)|$ for every basis vector and a cone adds novel
+structure if $|\cos(\dimv, v_i)| \approx 0$ for multiple $v_i$ while each
+direction stays individually causally effective (\Cref{tab:orthogonality}).
+
+\subsubsection*{KL retention on filtered Alpaca.}
+High ASR result is useless if the intervention destroys general capabilities.
+For each (model,~$k$) pair I sample $32$ directions from the cone interior
+(\Cref{alg:tco}) and compute the mean KL divergence between the ablated and
+clean model over the last $30$ token positions of $100$ held-out Alpaca
+instructions filtered of factual-recall keywords. A cone is \emph{surgical} if
+the mean MC~KL falls below $0.1$~\citep{arditiRefusalLanguageModels2024}, about
+$96{,}000$ token-level comparisons per cone.
+
+\section{Experiments}
+\label{sec:exp}
+
+\input{tables/tab_master}
+
+\subsection{Experimental setup}
+\label{sec:setup}
+\subsubsection*{Models.}
+Six instruction-tuned models from three families: Qwen-2.5 (1.5B, 7B,
+14B)~\cite{yang2024qwen25}, Gemma-2 (2B, 9B)~\cite{gemmateam2024gemma2}, and
+Llama-3.1-8B~\cite{grattafiori2024llama3}. All are loaded via
+nnsight~\cite{fiotto-kaufmanNNsightNDIFDemocratizing2025} on a RunPod NVIDIA A40
+48GB instance.
+\subsubsection*{Datasets.}
+Three True/False datasets: \textbf{cities} (``The city of [City]
+is in [Country]'', $1\,496$ statements)~\cite{marksGeometryTruthEmergent2024},
+\textbf{animals} (``A [Animal] is a mammal'', $504$), \textbf{elements} (``The
+symbol for [Element] is [Symbol]'', $930$), plus a \textbf{retain} set of $100$
+filtered Alpaca instructions. Each factual dataset is split $80$/$20$ for ID
+evaluation; OOD evaluation trains on cities and animals and evaluates on
+elements.
+\subsubsection*{Metrics.}
+$\mathrm{ASR}_{\text{abl}}$, $\mathrm{ASR}_{\text{add}}$, and KL retention
+(\Cref{sec:axioms}); logit difference for localization (\Cref{sec:loc}).
+Hyperparameters in \Cref{tab:hyperparams}.
+
+
+
+\subsection{TDO improves on the DIM baseline (RQ1)}
+\label{sec:exp_tdo}
+
+\textbf{Research question:} Does gradient-based 1-D optimization recover
+causally more precise directions than the Difference-in-Means baseline at
+matched layer and intervention magnitude?
+
+\Cref{tab:tdo_vs_dim} reports $\mathrm{ASR}_{\text{abl}}$ and
+$\mathrm{ASR}_{\text{add}}$ for both methods, ID and OOD.
+
+\begin{itemize}[leftmargin=*,nosep]
+\item \textbf{TDO closes the DIM ablation gap on five of six models.} For
+Qwen-2.5-1.5B, Gemma-2-2B, Gemma-2-9B, Llama-3.1-8B, and Qwen-2.5-14B, TDO
+ablation ASR moves from $\le 0.216$ (DIM) to between $0.658$ and $1.000$. The
+composite loss optimizes $\Labl$ directly, while DIM optimizes only mean
+separation. The OOD numbers suggest TDO is not memorizing entity-specific noise:
+TDO ablation OOD stays $\ge 0.125$ on every model except Qwen-2.5-7B.
+
+\item \textbf{TDO at $k=1$ fails for Qwen-2.5-7B.} Here both DIM and TDO give
+near-zero ablation ASR ($0.000$ and $0.020$). This is a clear failure of the
+$1$-D method on one model and motivates \Cref{sec:exp_cone}, where $k=2$ reaches
+ASR $= 1.000$ ID for it.
+\end{itemize}
+
+\input{tables/tab_tdo_vs_dim}
+
+\subsection{The 2-D Truth Cone closes the in-distribution gap (RQ2)}
+\label{sec:exp_cone}
+
+\textbf{Research question:} Does extending the optimization to a $k$-dimensional
+cone (with Monte-Carlo interior sampling) close the residual ASR gap where $1$-D
+fails, and at what $k$?
+
+\Cref{fig:teaser}(a) and \Cref{tab:cone_asr} report mean Monte-Carlo Answer
+Switching Rate over $32$ directions sampled uniformly from each learned cone, ID
+and OOD, for $k \in \{1, 2, 3, 4\}$.
+
+\begin{itemize}[leftmargin=*,nosep]
+\item \textbf{TCO at $k{=}2$ saturates ID ASR for every model.} All six reach
+mean MC ASR $= 1.000$ in-distribution at $k = 2$, including the Qwen-2.5-7B
+failure case. One extra dimension is enough to bridge the $1$-D gap
+in-distribution across the three families.
+
+\item \textbf{MC interior sampling gives uniform mediation.} The MC standard
+deviation at $k \le 2$ is zero or near-zero for all models
+(\Cref{tab:cone_asr}). Because the basis is kept orthonormal and the loss is
+applied to $16$ interior samples per step, the interior has no ``dead zones'' an
+ablation could find by chance. The MC std grows only at $k=4$ for Qwen-2.5-1.5B
+and Llama-3.1-8B, where over-parameterization starts to leave interior pockets
+unconstrained.
+
+\item \textbf{OOD generalization is weakest for Qwen-2.5-7B.} Its OOD ASR at
+$k=2$ is $0.682$, below the ID $1.000$ but rising to $\ge 0.987$ at $k=3$. This
+model needs more degrees of freedom to generalize across domains even though
+$k=2$ suffices within-domain; I return to this in the limitations.
+\end{itemize}
+
+\input{tables/tab_cone_asr}
+
+\subsection{The cone basis is near-orthogonal to the linear probe (RQ3)}
+\label{sec:exp_orth}
+
+\textbf{Research question:} Are the cone's basis vectors aligned with the linear
+DIM probe, or do they capture structure the linear probe does not represent?
+
+\Cref{tab:orthogonality} reports $|\cos(\dimv, v_i)|$ at the reference cone
+dimension $k = 4$ for every model.
+
+\begin{itemize}[leftmargin=*,nosep]
+\item \textbf{At $k=4$, the entire basis is near-orthogonal to DIM.} For all six
+models and all four basis vectors, $|\cos(\dimv, v_i)| < 0.1$, most below $0.05$.
+Since these same cones reach mean MC ASR $= 1.000$ (\Cref{tab:cone_asr}), they
+are causally effective directions the DIM probe does not recover.
+
+\item \textbf{DIM-alignment is specific to $k=1$.} At $k=1$, $|\cos(\dimv, v_1)|$
+sits between $0.816$ and $0.932$ (right column): the warm-started direction stays
+close to DIM. This does not persist. As $k$ grows the optimizer re-fits the whole
+basis, and by $k=4$ even $v_1$ has rotated to near-orthogonal. The cone does not
+keep a DIM-aligned axis; it uses DIM only as a starting point.
+
+\end{itemize}
+
+Together, the high MC ASR and the near-zero cosine similarity across the full
+basis make the ``$k$ noisy copies of DIM'' explanation unlikely: the cone
+mediates truth while its basis is geometrically distinct from the linear probe.
+
+\input{tables/tab_orthogonality}
+
+\subsection{Surgicality: \texorpdfstring{$k{=}2$}{k=2} resolves the 1-D KL
+failure (RQ4)}
+\label{sec:exp_kl}
+
+\textbf{Research question:} Do cone interventions preserve unrelated
+capabilities, and how does surgicality behave as a function of $k$?
+
+\Cref{fig:teaser}(b) and \Cref{tab:kl} report mean Monte-Carlo KL divergence on
+$100$ filtered Alpaca prompts, $32$ MC directions per cone, $30$ token positions
+per prompt.
+
+\begin{itemize}[leftmargin=*,nosep]
+\item \textbf{Three of six models are not surgical at $k=1$.} Qwen-2.5-7B,
+Qwen-2.5-14B, and Llama-3.1-8B exceed the threshold KL $= 0.1$ under $1$-D
+ablation, at $0.292$, $0.194$, $0.282$. The other three pass at $k = 1$.
+
+\item \textbf{All six are surgical at $k=2$.} Every model's mean MC KL drops
+below $0.05$; the three non-surgical models recover to $0.037$ (Qwen-2.5-7B),
+$0.009$ (Qwen-2.5-14B), and $0.017$ (Llama-3.1-8B).
+
+\item \textbf{Co-failure and co-recovery.} The three models that fail
+surgicality at $k=1$ are exactly the three that fail $\mathrm{ASR}_{\text{abl}}$
+at $k=1$ (\Cref{sec:exp_tdo,sec:exp_cone}), and both axes recover at $k=2$. A
+$1$-D projection of a multi-dimensional structure would both under-specify the
+concept (low ASR) and disturb correlated orthogonal components (high KL), which
+matches the joint failure seen here: for the larger models a single direction
+appears mismatched to truth on both causal axes at once, not under-expressive in
+just one.
+
+\item \textbf{Higher $k$ can re-introduce non-surgicality.} At $k=3$,
+Llama-3.1-8B and Qwen-2.5-7B rise back above the threshold ($0.811$ and
+$0.202$). This points to $k=2$ as the safe operating point rather than ``higher
+is always better''.
+\end{itemize}
+
+The KL term $\Lret$ is applied to every Monte-Carlo--sampled direction, so the
+optimizer cannot satisfy the ablation loss along directions that destroy retain
+behaviour. The cone is therefore pushed toward a region where ablation is both
+effective and surgical, which a $1$-D direction cannot guarantee for the larger
+models.
+
+\input{tables/tab_kl}
+
+\subsection{Cross-experiment summary}
+\label{sec:exp_summary}
+\Cref{tab:master} consolidates the per-model results. Three observations.
+
+\begin{itemize}[leftmargin=*,nosep]
+\item \textbf{$k=2$ is the effective dimensionality for most models.} For five
+of six the best $k^{*}$ is $2$; the smallest model (Qwen-2.5-1.5B) is
+essentially flat across $k$ and could equally be called $k^{*} = 1$. I do not
+claim $d^{*}$ scales continuously with model size; the data fit a threshold
+reading, below about $7$B parameters $1$-D suffices, at or above $7$B a $2$-D
+cone is needed.
+
+\item \textbf{Consistent across the three families tested.} The same $k^{*} = 2$
+holds for Qwen-2.5, Gemma-2, and Llama-3.1. The absolute layer $l^{*}$ varies
+(\Cref{tab:master}), and Llama-3.1-8B is an outlier at $l^{*}=14/32$ (depth
+$0.44$), but the cone-dimension finding is consistent across families.
+
+\item \textbf{Llama-3.1-8B's outlier $l^{*}$ lines up with its $k=1$
+non-surgicality.} Its earlier $l^{*}$ may explain the $1$-D non-surgicality:
+ablating an earlier hidden state cascades through more downstream computation
+and may touch unrelated capabilities. A mechanistic account is beyond this
+paper's scope and is a natural follow-up.
+\end{itemize}
+
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+I asked whether the concept-cone framework that explains refusal transfers to
+truth, and at what effective dimensionality. For the models I tested, the
+evidence is consistent with a $2$-D cone. Gradient-based $1$-D optimization
+(TDO) recovers truth directions that are more causally precise than the DIM
+baseline (\Cref{tab:tdo_vs_dim}); extending it to a $k$-dimensional cone with
+Monte-Carlo interior sampling (TCO) reaches mean MC Answer Switching Rate of
+$1.0$ in-distribution for every model at $k=2$ (\Cref{tab:cone_asr}), with the
+cone interior, not only its basis, appearing to mediate truth. The added
+basis vectors $v_2, v_3, v_4$ are near-orthogonal to the DIM probe yet each is
+individually causally effective (\Cref{tab:orthogonality}), so the cone seems to
+capture components of factual representation the linear probe misses. The
+clearest single result is the joint pattern in \Cref{tab:kl}: the three larger
+models that fail the ablation axis at $k=1$ are exactly the three that fail
+surgicality at $k=1$, and all three recover both axes at $k=2$. This cone is a
+higher-dimensional \emph{linear} object: every direction I recover is a linear
+direction in the residual stream, and the single-direction picture is its $k =
+1$ case. The goal was to extend the linear representation hypothesis to a
+multi-dimensional regime for truth.
+
+\subsubsection*{Limitations.}
+I keep the empirical claims narrow. This work studies instruction-tuned models
+on forced-choice True/False prompts over three domains (geography, biology,
+chemistry). It does not cover truth in open-ended generation, multi-hop
+reasoning, base (non-instruction-tuned) models, or adversarial robustness of the
+cone under steering attacks. The six-model sample is modest, and each (model,
+$k$) configuration is a single training run; variance across random
+initializations of the augmentation vector is not characterized. OOD
+generalization at $k=2$ is weakest for Qwen-2.5-7B ($0.682$,
+\Cref{tab:cone_asr}), so $k=2$ as a ``universal'' effective dimensionality
+should be read as ``in-distribution sufficient and OOD-acceptable on most
+models'' rather than a universal mechanistic claim. Why Llama-3.1-8B localizes
+truth at an earlier layer ($l^{*}=14/32$, \Cref{tab:master}) and correspondingly
+fails surgicality at $k=1$ is an open question this paper does not answer.
+
+\subsubsection*{Future work.}
+Three directions follow. First, the basis vectors $v_1, \ldots, v_k$ are
+causally effective and orthogonal to the linear probe, but their semantic
+content is unknown; logit-lens decoding and sparse-autoencoder analysis could
+test whether they match recognizable sub-concepts (e.g.\ entity type, factual
+domain). Second, an input-space accessibility analysis, in the spirit of
+\cite{wollschlagerGeometryRefusalLarge2025}'s GCG suffix study, would show
+whether these directions are actually used by the model on specific prompts or
+are latent. Third, extending the framework to open-ended factual generation and
+base models would test whether the cone structure observed here is a property of
+instruction tuning or of the underlying representations.
+
+
+% ============================================================================
+%  BIBLIOGRAPHY
+% ============================================================================
+\bibliography{references}
+
+\appendix
+\section{Hyperparameters}
+\input{tables/tab_hyperparams}
+
+
+\end{document}

@@ -1,0 +1,101 @@
+{
+  "model_name": "gemma-2-2b-it",
+  "add_layer": 15,
+  "alpha": 66.62397003173828,
+  "weights_file": "gemma-2-2b-it_20260513_033355_weights.pt",
+  "metadata": {
+    "add_layer": 15,
+    "alpha": 66.62397003173828,
+    "cone_dim": 1,
+    "training": {
+      "lr": 0.01,
+      "batch_size": 1,
+      "effective_batch_size": 16,
+      "epochs": 1,
+      "patience": 5,
+      "n_lr_reduce": 2,
+      "n_sample": 16,
+      "weight_decay": 0.0
+    },
+    "loss_weights": {
+      "ablation": 1.0,
+      "addition": 0.2,
+      "retention": 1.0
+    },
+    "retain_window": 30
+  },
+  "results": {
+    "lowest_loss": 0.0,
+    "did_early_stop": true
+  },
+  "history_metrics": {
+    "abl_loss": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "add_loss": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "ret_loss": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "lr_changes": [
+      95,
+      175
+    ]
+  },
+  "eval": {
+    "dim": {
+      "asr_ablation": 0.020689655172413793,
+      "asr_addition": 0.9310344827586207
+    },
+    "cone_1d": {
+      "asr_ablation": 0.4827586206896552,
+      "asr_addition": 0.9206896551724137
+    }
+  }
+}

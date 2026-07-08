@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0",
+  "produced_by": "experiment_3",
+  "timestamp": "2026-05-27T16:35:10.636072",
+  "cone_dims": [
+    2,
+    3,
+    4
+  ],
+  "models": {
+    "gemma-2-9b-it": {
+      "add_layer": 24,
+      "alpha": 106.5625,
+      "cone_dims_evaluated": [
+        2,
+        3,
+        4
+      ],
+      "cones": {
+        "2": {
+          "weights_file": "gemma-2-9b-it_d2_20260527_154550_weights.pt",
+          "basis_key": "best_vectors",
+          "mc_asr_ablation": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "mc_asr_ablation_ood": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "lowest_loss": 26.5076943730656,
+          "did_early_stop": true
+        },
+        "3": {
+          "weights_file": "gemma-2-9b-it_d3_20260527_161123_weights.pt",
+          "basis_key": "best_vectors",
+          "mc_asr_ablation": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "mc_asr_ablation_ood": {
+            "mean": 0.9795698924731183,
+            "std": 0.06055968963582246,
+            "median": 1.0,
+            "min": 0.6709677419354839,
+            "max": 1.0
+          },
+          "lowest_loss": 23.992362721002042,
+          "did_early_stop": true
+        },
+        "4": {
+          "weights_file": "gemma-2-9b-it_d4_20260527_163509_weights.pt",
+          "basis_key": "best_vectors",
+          "mc_asr_ablation": {
+            "mean": 1.0,
+            "std": 0.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "mc_asr_ablation_ood": {
+            "mean": 0.9455645161290323,
+            "std": 0.12704954899697715,
+            "median": 1.0,
+            "min": 0.3204301075268817,
+            "max": 1.0
+          },
+          "lowest_loss": 23.357281601861214,
+          "did_early_stop": true
+        }
+      },
+      "optimal_dim": 2
+    }
+  }
+}

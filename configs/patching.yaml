@@ -1,0 +1,40 @@
+# Experiment 1: Activation patching configuration
+
+models:
+  - name: qwen-2.5-1.5b-instruct
+    quantization: false
+  - name: gemma-2-2b-it
+    quantization: false
+  - name: qwen-2.5-7b-instruct
+    quantization: false
+  - name: gemma-2-9b-it
+    quantization: true
+  - name: llama-3.1-8b-instruct
+    quantization: true
+  - name: qwen-2.5-14b-instruct
+    quantization: true   # 4-bit for memory
+
+datasets:
+  - name: cities
+    csv_path: datasets/cities_contrastive.csv
+    examples:
+      - ["The city of Tokyo is in Japan", "TRUE"]
+      - ["The city of Hanoi is in Poland", "FALSE"]
+  - name: animals
+    csv_path: datasets/animals_contrastive.csv
+    examples:
+      - ["A whale is a mammal", "TRUE"]
+      - ["A snake is a mammal", "FALSE"]
+  - name: elements
+    csv_path: datasets/elements_contrastive.csv
+    examples:
+      - ["The symbol for Helium is He", "TRUE"]
+      - ["The symbol for Iron is Au", "FALSE"]
+
+n_prompts_per_dataset: 50
+npe_threshold: 0.10
+group_b_start_frac: 0.40
+group_b_end_frac: 0.90
+
+output_dir: experimental_outputs/exp1_patching
+figures_dir: figures/exp1_patching

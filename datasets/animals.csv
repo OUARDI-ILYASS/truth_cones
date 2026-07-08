@@ -1,0 +1,505 @@
+statement,label
+The aardvark has a diet of omnivore.,0
+The alpaca has a diet of herbivore.,1
+The alpaca has a diet of omnivore.,0
+The armadillo has a diet of herbivore.,0
+The armadillo has a diet of insectivore.,1
+The axolotl has a diet of carnivore.,1
+The axolotl has a diet of herbivore.,0
+The bat has a diet of insectivore.,0
+The bat has a diet of varies.,1
+The beaver has a diet of carnivore.,0
+The beaver has a diet of herbivore.,1
+The bee has a diet of herbivore.,0
+The bee has a diet of nectar.,1
+The bison has a diet of carnivore.,0
+The bison has a diet of herbivore.,1
+The camel has a diet of herbivore.,1
+The camel has a diet of varies.,0
+The cassowary has a diet of carnivore.,0
+The cassowary has a diet of omnivore.,1
+The cat has a diet of carnivore.,1
+The cat has a diet of omnivore.,0
+The cheetah has a diet of carnivore.,1
+The cheetah has a diet of varies.,0
+The chicken has a diet of herbivore.,0
+The chicken has a diet of omnivore.,1
+The chimpanzee has a diet of carnivore.,0
+The chimpanzee has a diet of omnivore.,1
+The cow has a diet of  carnivore.,0
+The cow has a diet of herbivore.,1
+The crocodile has a diet of  carnivore.,1
+The crocodile has a diet of carnivore.,0
+The deer has a diet of herbivore.,1
+The deer has a diet of insectivore.,0
+The dog has a diet of carnivore.,0
+The dog has a diet of omnivore.,1
+The dolphin has a diet of carnivore.,1
+The dolphin has a diet of omnivore.,0
+The eagle has a diet of carnivore.,1
+The eagle has a diet of herbivore.,0
+The elephant has a diet of carnivore.,0
+The elephant has a diet of herbivore.,1
+The flamingo has a diet of herbivore.,1
+The flamingo has a diet of omnivore.,0
+The frog has a diet of carnivore.,1
+The frog has a diet of omnivore.,0
+The gazelle has a diet of carnivore.,0
+The gazelle has a diet of herbivore.,1
+The gecko has a diet of herbivore.,0
+The gecko has a diet of insectivore.,1
+The giant anteater has a diet of carnivore.,0
+The giant anteater has a diet of insectivore.,1
+The giraffe has a diet of carnivore.,0
+The giraffe has a diet of herbivore.,1
+The goat has a diet of herbivore.,1
+The goat has a diet of omnivore.,0
+The goldfish has a diet of carnivore.,0
+The goldfish has a diet of omnivore.,1
+The gorilla has a diet of carnivore.,0
+The gorilla has a diet of herbivore.,1
+The hamster has a diet of herbivore.,0
+The hamster has a diet of omnivore.,1
+The hedgehog has a diet of herbivore.,0
+The hedgehog has a diet of insectivore.,1
+The hippopotamus has a diet of carnivore.,0
+The hippopotamus has a diet of herbivore.,1
+The horse has a diet of herbivore.,1
+The horse has a diet of omnivore.,0
+The hummingbird has a diet of nectar.,1
+The hummingbird has a diet of omnivore.,0
+The hyena has a diet of carnivore.,1
+The hyena has a diet of herbivore.,0
+The iguana has a diet of carnivore.,0
+The iguana has a diet of herbivore.,1
+The jellyfish has a diet of carnivore.,1
+The jellyfish has a diet of herbivore.,0
+The kangaroo has a diet of carnivore.,0
+The kangaroo has a diet of herbivore.,1
+The koala has a diet of carnivore.,0
+The koala has a diet of herbivore.,1
+The leopard has a diet of carnivore.,1
+The leopard has a diet of herbivore.,0
+The lion has a diet of carnivore.,1
+The lion has a diet of omnivore.,0
+The llama has a diet of herbivore.,1
+The llama has a diet of insectivore.,0
+The lobster has a diet of nectar.,0
+The lobster has a diet of omnivore.,1
+The manta ray has a diet of carnivore.,1
+The manta ray has a diet of omnivore.,0
+The mongoose has a diet of carnivore.,1
+The mongoose has a diet of herbivore.,0
+The moose has a diet of herbivore.,1
+The moose has a diet of omnivore.,0
+The narwhal has a diet of carnivore.,1
+The narwhal has a diet of herbivore.,0
+The octopus has a diet of carnivore.,1
+The octopus has a diet of insectivore.,0
+The ostrich has a diet of herbivore.,1
+The ostrich has a diet of omnivore.,0
+The otter has a diet of carnivore.,1
+The otter has a diet of herbivore.,0
+The panda has a diet of carnivore.,0
+The panda has a diet of herbivore.,1
+The parrot has a diet of carnivore.,0
+The parrot has a diet of omnivore.,1
+The peacock has a diet of herbivore.,0
+The peacock has a diet of omnivore.,1
+The penguin has a diet of carnivore.,1
+The penguin has a diet of herbivore.,0
+The pigeon has a diet of herbivore.,1
+The pigeon has a diet of omnivore.,0
+The platypus has a diet of  carnivore.,0
+The platypus has a diet of carnivore.,1
+The polar bear has a diet of carnivore.,1
+The polar bear has a diet of omnivore.,0
+The porcupine has a diet of carnivore.,0
+The porcupine has a diet of herbivore.,1
+The rabbit has a diet of carnivore.,0
+The rabbit has a diet of herbivore.,1
+The raccoon has a diet of carnivore.,0
+The raccoon has a diet of omnivore.,1
+The rat has a diet of herbivore.,0
+The rat has a diet of omnivore.,1
+The rhinoceros has a diet of herbivore.,1
+The rhinoceros has a diet of omnivore.,0
+The salmon has a diet of carnivore.,1
+The salmon has a diet of herbivore.,0
+The sea turtle has a diet of carnivore.,0
+The sea turtle has a diet of varies.,1
+The seagull has a diet of herbivore.,0
+The seagull has a diet of omnivore.,1
+The seahorse has a diet of carnivore.,1
+The seahorse has a diet of insectivore.,0
+The shark has a diet of carnivore.,1
+The shark has a diet of herbivore.,0
+The skunk has a diet of herbivore.,0
+The skunk has a diet of omnivore.,1
+The slug has a diet of carnivore.,0
+The slug has a diet of herbivore.,1
+The snake has a diet of carnivore.,1
+The snake has a diet of herbivore.,0
+The sparrow has a diet of herbivore.,0
+The sparrow has a diet of omnivore.,1
+The squirrel has a diet of herbivore.,1
+The squirrel has a diet of omnivore.,0
+The swan has a diet of herbivore.,1
+The swan has a diet of omnivore.,0
+The tapir has a diet of carnivore.,0
+The tapir has a diet of herbivore.,1
+The tarantula has a diet of carnivore.,0
+The tarantula has a diet of insectivore.,1
+The tiger has a diet of carnivore.,1
+The tiger has a diet of herbivore.,0
+The tortoise has a diet of  carnivore.,0
+The tortoise has a diet of herbivore.,1
+The tuna has a diet of carnivore.,1
+The tuna has a diet of insectivore.,0
+The vulture has a diet of carnivore.,1
+The vulture has a diet of insectivore.,0
+The walrus has a diet of carnivore.,1
+The walrus has a diet of insectivore.,0
+The whale has a diet of carnivore/herbivore.,1
+The whale has a diet of herbivore.,0
+The wolverine has a diet of carnivore.,1
+The wolverine has a diet of herbivore.,0
+The zebra has a diet of herbivore.,1
+The zebra has a diet of insectivore.,0
+The aardvark has a habitat of savanna.,1
+The aardvark has a habitat of urban/wild.,0
+The alpaca has a habitat of mountain.,1
+The alpaca has a habitat of various.,0
+The armadillo has a habitat of mountain bamboo forest.,0
+The armadillo has a habitat of various.,1
+The axolotl has a habitat of coastal.,0
+The axolotl has a habitat of freshwater.,1
+The bat has a habitat of grassland.,0
+The bat has a habitat of various.,1
+The beaver has a habitat of forest/grassland.,0
+The beaver has a habitat of freshwater.,1
+The bee has a habitat of urban/wild.,0
+The bee has a habitat of various.,1
+The bison has a habitat of grassland.,1
+The bison has a habitat of various.,0
+The camel has a habitat of desert.,1
+The camel has a habitat of domestic/urban.,0
+The cassowary has a habitat of forest.,1
+The cassowary has a habitat of marine.,0
+The cat has a habitat of domestic/urban.,1
+The cat has a habitat of various.,0
+The cheetah has a habitat of grassland.,1
+The cheetah has a habitat of marine.,0
+The chicken has a habitat of farmland/urban.,1
+The chicken has a habitat of various.,0
+The chimpanzee has a habitat of forest.,1
+The chimpanzee has a habitat of mountain.,0
+The cow has a habitat of farmland.,1
+The cow has a habitat of forest/urban.,0
+The crocodile has a habitat of freshwater.,1
+The crocodile has a habitat of various.,0
+The deer has a habitat of forest/grassland.,1
+The deer has a habitat of forest/urban.,0
+The dog has a habitat of domestic/urban.,1
+The dog has a habitat of freshwater.,0
+The dolphin has a habitat of marine.,1
+The dolphin has a habitat of urban/old-world habitats.,0
+The eagle has a habitat of urban/wild.,0
+The eagle has a habitat of various.,1
+The elephant has a habitat of grassland.,0
+The elephant has a habitat of terrestrial.,1
+The flamingo has a habitat of coastal/alkaline lakes.,1
+The flamingo has a habitat of mountain bamboo forest.,0
+The frog has a habitat of forest/urban.,0
+The frog has a habitat of freshwater.,1
+The gazelle has a habitat of farmland.,0
+The gazelle has a habitat of grassland.,1
+The gecko has a habitat of forest.,0
+The gecko has a habitat of various.,1
+The giant anteater has a habitat of grassland/forest.,1
+The giant anteater has a habitat of savanna.,0
+The giraffe has a habitat of farmland.,0
+The giraffe has a habitat of savanna.,1
+The goat has a habitat of farmland.,1
+The goat has a habitat of various.,0
+The goldfish has a habitat of farmland/domestic.,0
+The goldfish has a habitat of freshwater.,1
+The gorilla has a habitat of forest.,1
+The gorilla has a habitat of savanna.,0
+The hamster has a habitat of coastal.,0
+The hamster has a habitat of desert.,1
+The hedgehog has a habitat of grassland.,0
+The hedgehog has a habitat of various.,1
+The hippopotamus has a habitat of domestic/urban.,0
+The hippopotamus has a habitat of freshwater.,1
+The horse has a habitat of farmland/domestic.,1
+The horse has a habitat of polar.,0
+The hummingbird has a habitat of grassland.,0
+The hummingbird has a habitat of various.,1
+The hyena has a habitat of freshwater.,0
+The hyena has a habitat of grassland/savanna.,1
+The iguana has a habitat of coastal.,0
+The iguana has a habitat of various.,1
+The jellyfish has a habitat of coastal.,0
+The jellyfish has a habitat of marine.,1
+The kangaroo has a habitat of grasslands.,1
+The kangaroo has a habitat of savanna.,0
+The koala has a habitat of forest.,1
+The koala has a habitat of savanna.,0
+The leopard has a habitat of forest/grassland.,1
+The leopard has a habitat of marine.,0
+The lion has a habitat of domestic/urban.,0
+The lion has a habitat of grassland.,1
+The llama has a habitat of mountain bamboo forest.,0
+The llama has a habitat of mountain.,1
+The lobster has a habitat of marine.,1
+The lobster has a habitat of various.,0
+The manta ray has a habitat of farmland/domestic.,0
+The manta ray has a habitat of marine.,1
+The mongoose has a habitat of grassland.,0
+The mongoose has a habitat of various.,1
+The moose has a habitat of forest.,1
+The moose has a habitat of freshwater/marine.,0
+The narwhal has a habitat of arctic.,1
+The narwhal has a habitat of desert.,0
+The octopus has a habitat of marine.,1
+The octopus has a habitat of various.,0
+The ostrich has a habitat of forest.,0
+The ostrich has a habitat of grassland.,1
+The otter has a habitat of forest.,0
+The otter has a habitat of freshwater/marine.,1
+The panda has a habitat of freshwater.,0
+The panda has a habitat of mountain bamboo forest.,1
+The parrot has a habitat of coastal.,0
+The parrot has a habitat of forest.,1
+The peacock has a habitat of forest/grassland.,1
+The peacock has a habitat of various.,0
+The penguin has a habitat of marine/polar.,1
+The penguin has a habitat of mountain.,0
+The pigeon has a habitat of desert.,0
+The pigeon has a habitat of urban/old-world habitats.,1
+The platypus has a habitat of freshwater.,1
+The platypus has a habitat of various.,0
+The polar bear has a habitat of polar.,1
+The polar bear has a habitat of various.,0
+The porcupine has a habitat of marine.,0
+The porcupine has a habitat of various.,1
+The rabbit has a habitat of freshwater.,0
+The rabbit has a habitat of grassland.,1
+The raccoon has a habitat of forest/urban.,1
+The raccoon has a habitat of urban/old-world habitats.,0
+The rat has a habitat of freshwater.,0
+The rat has a habitat of urban/wild.,1
+The rhinoceros has a habitat of grassland/forest.,1
+The rhinoceros has a habitat of marine.,0
+The salmon has a habitat of freshwater/marine.,1
+The salmon has a habitat of savanna.,0
+The sea turtle has a habitat of marine.,1
+The sea turtle has a habitat of polar.,0
+The seagull has a habitat of coastal.,1
+The seagull has a habitat of grassland.,0
+The seahorse has a habitat of marine.,1
+The seahorse has a habitat of mountain.,0
+The shark has a habitat of marine.,1
+The shark has a habitat of urban/wild.,0
+The skunk has a habitat of arctic/subarctic.,0
+The skunk has a habitat of various.,1
+The slug has a habitat of savanna.,0
+The slug has a habitat of various.,1
+The snake has a habitat of forest/grassland.,0
+The snake has a habitat of terrestrial.,1
+The sparrow has a habitat of urban/wild.,1
+The sparrow has a habitat of various.,0
+The squirrel has a habitat of forest/urban.,1
+The squirrel has a habitat of marine.,0
+The swan has a habitat of freshwater.,1
+The swan has a habitat of polar.,0
+The tapir has a habitat of desert.,0
+The tapir has a habitat of forest.,1
+The tarantula has a habitat of urban/old-world habitats.,0
+The tarantula has a habitat of various.,1
+The tiger has a habitat of forest.,1
+The tiger has a habitat of grassland.,0
+The tortoise has a habitat of marine.,0
+The tortoise has a habitat of terrestrial.,1
+The tuna has a habitat of marine.,1
+The tuna has a habitat of urban/wild.,0
+The vulture has a habitat of grassland.,0
+The vulture has a habitat of various.,1
+The walrus has a habitat of forest/urban.,0
+The walrus has a habitat of polar.,1
+The whale has a habitat of marine.,1
+The whale has a habitat of various.,0
+The wolverine has a habitat of arctic/subarctic.,1
+The wolverine has a habitat of forest.,0
+The zebra has a habitat of farmland.,0
+The zebra has a habitat of grassland.,1
+The aardvark uses walking for locomotion.,1
+The aardvark uses walking/swimming for locomotion.,0
+The alpaca uses swimming for locomotion.,0
+The alpaca uses walking for locomotion.,1
+The armadillo uses swimming for locomotion.,0
+The armadillo uses walking for locomotion.,1
+The axolotl uses swimming for locomotion.,1
+The axolotl uses swimming/flying for locomotion.,0
+The bat uses flying for locomotion.,1
+The bat uses walking for locomotion.,0
+The beaver uses swimming for locomotion.,1
+The beaver uses walking for locomotion.,0
+The bee uses flying for locomotion.,1
+The bee uses walking for locomotion.,0
+The bison uses walking for locomotion.,1
+The bison uses walking/swimming for locomotion.,0
+The camel uses flying for locomotion.,0
+The camel uses walking for locomotion.,1
+The cassowary uses running for locomotion.,1
+The cassowary uses walking/swimming for locomotion.,0
+The cat uses running for locomotion.,0
+The cat uses walking for locomotion.,1
+The cheetah uses running for locomotion.,1
+The cheetah uses walking for locomotion.,0
+The chicken uses swimming for locomotion.,0
+The chicken uses walking for locomotion.,1
+The chimpanzee uses knuckle-walking for locomotion.,0
+The chimpanzee uses walking for locomotion.,1
+The cow uses flying for locomotion.,0
+The cow uses walking for locomotion.,1
+The crocodile uses walking for locomotion.,0
+The crocodile uses walking/swimming for locomotion.,1
+The deer uses flying for locomotion.,0
+The deer uses walking for locomotion.,1
+The dog uses knuckle-walking for locomotion.,0
+The dog uses walking for locomotion.,1
+The dolphin uses swimming for locomotion.,1
+The dolphin uses walking for locomotion.,0
+The eagle uses flying for locomotion.,1
+The eagle uses swimming for locomotion.,0
+The elephant uses flying for locomotion.,0
+The elephant uses walking for locomotion.,1
+The flamingo uses drifting for locomotion.,0
+The flamingo uses wading for locomotion.,1
+The frog uses jumping for locomotion.,1
+The frog uses walking for locomotion.,0
+The gazelle uses flying for locomotion.,0
+The gazelle uses running for locomotion.,1
+The gecko uses climbing for locomotion.,1
+The gecko uses walking for locomotion.,0
+The giant anteater uses swimming for locomotion.,0
+The giant anteater uses walking for locomotion.,1
+The giraffe uses hopping for locomotion.,0
+The giraffe uses walking for locomotion.,1
+The goat uses flying for locomotion.,0
+The goat uses walking for locomotion.,1
+The goldfish uses knuckle-walking for locomotion.,0
+The goldfish uses swimming for locomotion.,1
+The gorilla uses knuckle-walking for locomotion.,1
+The gorilla uses walking for locomotion.,0
+The hamster uses drifting for locomotion.,0
+The hamster uses walking for locomotion.,1
+The hedgehog uses running for locomotion.,0
+The hedgehog uses walking for locomotion.,1
+The hippopotamus uses walking for locomotion.,0
+The hippopotamus uses walking/swimming for locomotion.,1
+The horse uses swimming for locomotion.,0
+The horse uses walking for locomotion.,1
+The hummingbird uses flying for locomotion.,1
+The hummingbird uses swimming for locomotion.,0
+The hyena uses flying for locomotion.,0
+The hyena uses walking for locomotion.,1
+The iguana uses climbing for locomotion.,1
+The iguana uses swimming for locomotion.,0
+The jellyfish uses drifting for locomotion.,1
+The jellyfish uses walking/swimming for locomotion.,0
+The kangaroo uses hopping for locomotion.,1
+The kangaroo uses swimming for locomotion.,0
+The koala uses swimming for locomotion.,0
+The koala uses walking for locomotion.,1
+The leopard uses flying for locomotion.,0
+The leopard uses walking for locomotion.,1
+The lion uses running for locomotion.,0
+The lion uses walking for locomotion.,1
+The llama uses flying for locomotion.,0
+The llama uses walking for locomotion.,1
+The lobster uses running for locomotion.,0
+The lobster uses walking/swimming for locomotion.,1
+The manta ray uses swimming for locomotion.,1
+The manta ray uses walking for locomotion.,0
+The mongoose uses swimming for locomotion.,0
+The mongoose uses walking for locomotion.,1
+The moose uses walking for locomotion.,1
+The moose uses walking/swimming for locomotion.,0
+The narwhal uses jumping for locomotion.,0
+The narwhal uses swimming for locomotion.,1
+The octopus uses hopping for locomotion.,0
+The octopus uses swimming for locomotion.,1
+The ostrich uses running for locomotion.,1
+The ostrich uses walking for locomotion.,0
+The otter uses swimming for locomotion.,1
+The otter uses walking for locomotion.,0
+The panda uses wading for locomotion.,0
+The panda uses walking for locomotion.,1
+The parrot uses flying for locomotion.,1
+The parrot uses swimming for locomotion.,0
+The peacock uses running for locomotion.,0
+The peacock uses walking for locomotion.,1
+The penguin uses swimming for locomotion.,0
+The penguin uses walking/swimming for locomotion.,1
+The pigeon uses flying for locomotion.,1
+The pigeon uses walking/swimming for locomotion.,0
+The platypus uses swimming for locomotion.,1
+The platypus uses walking for locomotion.,0
+The polar bear uses walking for locomotion.,0
+The polar bear uses walking/swimming for locomotion.,1
+The porcupine uses flying for locomotion.,0
+The porcupine uses walking for locomotion.,1
+The rabbit uses hopping for locomotion.,1
+The rabbit uses running for locomotion.,0
+The raccoon uses flying for locomotion.,0
+The raccoon uses walking for locomotion.,1
+The rat uses climbing for locomotion.,0
+The rat uses walking for locomotion.,1
+The rhinoceros uses flying for locomotion.,0
+The rhinoceros uses walking for locomotion.,1
+The salmon uses flying for locomotion.,0
+The salmon uses swimming for locomotion.,1
+The sea turtle uses swimming for locomotion.,1
+The sea turtle uses walking for locomotion.,0
+The seagull uses flying for locomotion.,1
+The seagull uses swimming for locomotion.,0
+The seahorse uses swimming for locomotion.,1
+The seahorse uses walking for locomotion.,0
+The shark uses swimming for locomotion.,1
+The shark uses wading for locomotion.,0
+The skunk uses flying for locomotion.,0
+The skunk uses walking for locomotion.,1
+The slug lacks a shell and secretes a slimy mucus for protection and locomotion.,1
+The slug uses sliding for locomotion.,1
+The slug uses swimming for locomotion.,0
+The snake uses slithering for locomotion.,1
+The snake uses walking for locomotion.,0
+The sparrow uses flying for locomotion.,1
+The sparrow uses knuckle-walking for locomotion.,0
+The squirrel uses swimming/flying for locomotion.,0
+The squirrel uses walking/jumping for locomotion.,1
+The swan uses swimming/flying for locomotion.,1
+The swan uses walking for locomotion.,0
+The tapir uses swimming for locomotion.,0
+The tapir uses walking for locomotion.,1
+The tarantula uses running for locomotion.,0
+The tarantula uses walking for locomotion.,1
+The tiger uses swimming for locomotion.,0
+The tiger uses walking for locomotion.,1
+The tortoise uses hopping for locomotion.,0
+The tortoise uses walking for locomotion.,1
+The tuna uses swimming for locomotion.,1
+The tuna uses walking for locomotion.,0
+The vulture uses flying for locomotion.,1
+The vulture uses jumping for locomotion.,0
+The walrus uses swimming for locomotion.,1
+The walrus uses walking for locomotion.,0
+The whale uses swimming for locomotion.,1
+The whale uses walking for locomotion.,0
+The wolverine uses swimming for locomotion.,0
+The wolverine uses walking for locomotion.,1
+The zebra uses flying for locomotion.,0
+The zebra uses walking for locomotion.,1
