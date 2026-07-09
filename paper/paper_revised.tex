@@ -784,19 +784,31 @@ direction in the residual stream, and the single-direction picture is its $k =
 multi-dimensional regime for truth.
 
 \subsubsection*{Limitations.}
-I keep the empirical claims narrow. This work studies instruction-tuned models
-on forced-choice True/False prompts over three domains (geography, biology,
-chemistry). It does not cover truth in open-ended generation, multi-hop
-reasoning, base (non-instruction-tuned) models, or adversarial robustness of the
-cone under steering attacks. The six-model sample is modest, and each (model,
-$k$) configuration is a single training run; variance across random
-initializations of the augmentation vector is not characterized. OOD
-generalization at $k=2$ is weakest for Qwen-2.5-7B ($0.682$,
-\Cref{tab:cone_asr}), so $k=2$ as a ``universal'' effective dimensionality
-should be read as ``in-distribution sufficient and OOD-acceptable on most
-models'' rather than a universal mechanistic claim. Why Llama-3.1-8B localizes
-truth at an earlier layer ($l^{*}=14/32$, \Cref{tab:master}) and correspondingly
-fails surgicality at $k=1$ is an open question this paper does not answer.
+The empirical claims are scoped to instruction-tuned models on forced-choice
+True/False prompts over three factual domains (geography, biology, chemistry).
+Truth in open-ended generation, multi-hop reasoning, base (non-instruction-tuned)
+models, and adversarial robustness of the cone under steering attacks remain
+untested. While six models across three families provide reasonable breadth, they
+are all relatively small ($\le 14$B parameters); whether the $k^{*}=2$ threshold
+persists, shifts, or grows for frontier-scale models ($\ge 70$B) is an open
+question.
+
+A likely contributor to the surgicality regressions observed at $k \ge 3$ is the
+fixed Monte-Carlo sampling budget: only $16$ interior directions are drawn per
+training step (\Cref{tab:hyperparams}). As the cone dimension grows, the volume
+of the positive orthant of $S^{k-1}$ increases and $16$ samples may no longer
+cover it densely enough to prevent unconstrained interior pockets, precisely
+the ``dead zones'' the sampling is designed to eliminate. Running TCO with a
+larger sampling budget (e.g.\ $64$ or $128$ directions per step) could improve
+higher-$k$ surgicality, but was not feasible within the compute budget available
+for this work (single-GPU training on a rented instance). Each (model, $k$)
+configuration is also a single training run; variance across random
+initializations of the augmentation vector is not characterized.
+
+OOD generalization at $k=2$ is weakest for Qwen-2.5-7B ($0.682$,
+\Cref{tab:cone_asr}), so $k=2$ as an effective dimensionality should be read as
+``in-distribution sufficient and OOD-acceptable on most models'' rather than a
+universal mechanistic claim.
 
 \subsubsection*{Future work.}
 Three directions follow. First, the basis vectors $v_1, \ldots, v_k$ are
@@ -820,5 +832,6 @@ instruction tuning or of the underlying representations.
 \section{Hyperparameters}
 \input{tables/tab_hyperparams}
 
+\input{ai_disclaimer.tex}
 
 \end{document}
